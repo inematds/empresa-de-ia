@@ -308,6 +308,7 @@
     <h3>Safe agent checklist: can you switch it on?</h3>
     <p>The agent works on its own and touches files, accounts and messages. The rule from the keynote is least privilege: it only accesses what the task needs, and someone keeps an eye on it. Tick what is already guaranteed.</p>
     <div class="tool">
+      <p class="nota" style="margin-top:0">Items 2, 4 and 10 are required: without any of them the result stays at supervised pilot.</p>
       <div class="check" id="chk"></div>
       <div class="veredito" id="chkRes"></div>
       <p class="nota">Based on the principle of least privilege and on the risks in the OWASP Top 10 for Agentic Applications (2026), translated for non-technical readers. The text version is in <a href="https://github.com/inematds/empresa-de-ia/blob/main/kit/checklist-agente-seguro.md" target="_blank" rel="noopener"><code>kit/checklist-agente-seguro.md</code></a> (in Portuguese).</p>
@@ -406,7 +407,7 @@ var T={
     ['Pilot only with supervision.','You can test with a person checking every answer. Close the missing items during the pilot.'],
     ['Ready for the pilot.','The main safeguards are in place. Keep measuring and reviewing the log every week.']
   ],
-  obrig:'Required items missing (2, 4 and 10): without them it stays a supervised pilot.',
+  obrig:'Required item missing: ', obrig2:'without it this stays a supervised pilot.',
   marcados:'items guaranteed'
 };
 (function(){
@@ -508,7 +509,7 @@ function chk(){
   var lv=n<=5?0:(n<=8?1:2), falta=!(marks[1]&&marks[3]&&marks[9]); if(falta&&lv==2)lv=1;
   var v=T.vered[lv], box=document.getElementById('chkRes');
   box.className='veredito '+['bad','warn','ok'][lv];
-  box.innerHTML='<strong>'+n+'/10 '+T.marcados+' · '+v[0]+'</strong><br><span class="mut">'+v[1]+(falta&&n>5?'<br>'+T.obrig:'')+'</span>';
+  box.innerHTML='<strong>'+n+'/10 '+T.marcados+' · '+v[0]+'</strong><br><span class="mut">'+v[1]+(falta&&n>5?'<br>'+T.obrig+[1,3,9].filter(function(i){return !marks[i]}).map(function(i){return i+1}).join(', ')+' — '+T.obrig2:'')+'</span>';
 }
 document.getElementById('chk').addEventListener('change',chk); chk();
 </script>

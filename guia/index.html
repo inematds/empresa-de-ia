@@ -308,6 +308,7 @@
     <h3>Checklist do agente seguro: dá para ligar?</h3>
     <p>O agente trabalha sozinho, mexe em arquivos, contas e mensagens. A regra do keynote é privilégio mínimo: ele só acessa o que a tarefa precisa, e alguém acompanha. Marque o que já está garantido.</p>
     <div class="tool">
+      <p class="nota" style="margin-top:0">Os itens 2, 4 e 10 são obrigatórios: sem qualquer um deles o resultado não passa de piloto com supervisão.</p>
       <div class="check" id="chk"></div>
       <div class="veredito" id="chkRes"></div>
       <p class="nota">Baseado no princípio do privilégio mínimo e nos riscos do OWASP Top 10 para aplicações com agentes (2026), traduzido para quem não é técnico. A versão em texto está em <a href="https://github.com/inematds/empresa-de-ia/blob/main/kit/checklist-agente-seguro.md" target="_blank" rel="noopener"><code>kit/checklist-agente-seguro.md</code></a>.</p>
@@ -406,7 +407,7 @@ var T={
     ['Piloto só com supervisão.','Dá para testar com uma pessoa olhando cada resposta. Feche os itens que faltam durante o piloto.'],
     ['Pronto para o piloto.','As garantias principais estão no lugar. Siga medindo e revisando o registro toda semana.']
   ],
-  obrig:'Faltam itens obrigatórios (2, 4 e 10): sem eles não passa de piloto com supervisão.',
+  obrig:'Falta item obrigatório: ', obrig2:'sem ele não passa de piloto com supervisão.',
   marcados:'itens garantidos'
 };
 (function(){
@@ -472,7 +473,7 @@ document.getElementById('rxReset').onclick=function(){rows=T.exemplo.map(functio
 document.getElementById('rxCsv').onclick=function(){
   var q=function(s){return '"'+String(s).replace(/"/g,'""')+'"'};
   var lines=[T.csvCab.join(T.sep)].concat(rows.map(function(r){var s=rxScore(r);
-    return [q(r[0]),q(T.catOp[r[1]]||r[1]),r[2],r[3],q(T.regraOp[r[4]]),q(T.dadoOp[r[5]]),q(T.riscoOp[r[6]]),s.horas.toLocaleString(T.lang,{maximumFractionDigits:1}),s.nota.toLocaleString(T.lang,{maximumFractionDigits:1})].join(T.sep)}));
+    return [q(r[0]),q(T.catOp[r[1]]||r[1]),r[2],r[3],q(T.regraOp[r[4]]),q(T.dadoOp[r[5]]),q(T.riscoOp[r[6]]),s.horas.toLocaleString(T.lang,{maximumFractionDigits:1,useGrouping:false}),s.nota.toLocaleString(T.lang,{maximumFractionDigits:1,useGrouping:false})].join(T.sep)}));
   var a=document.createElement('a');
   a.href=URL.createObjectURL(new Blob(['﻿'+lines.join('\n')],{type:'text/csv'}));
   a.download=T.csvNome; document.body.appendChild(a); a.click(); a.remove();
@@ -508,7 +509,7 @@ function chk(){
   var lv=n<=5?0:(n<=8?1:2), falta=!(marks[1]&&marks[3]&&marks[9]); if(falta&&lv==2)lv=1;
   var v=T.vered[lv], box=document.getElementById('chkRes');
   box.className='veredito '+['bad','warn','ok'][lv];
-  box.innerHTML='<strong>'+n+'/10 '+T.marcados+' · '+v[0]+'</strong><br><span class="mut">'+v[1]+(falta&&n>5?'<br>'+T.obrig:'')+'</span>';
+  box.innerHTML='<strong>'+n+'/10 '+T.marcados+' · '+v[0]+'</strong><br><span class="mut">'+v[1]+(falta&&n>5?'<br>'+T.obrig+[1,3,9].filter(function(i){return !marks[i]}).map(function(i){return i+1}).join(', ')+' — '+T.obrig2:'')+'</span>';
 }
 document.getElementById('chk').addEventListener('change',chk); chk();
 </script>

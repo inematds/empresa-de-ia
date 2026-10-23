@@ -308,6 +308,7 @@
     <h3>Checklist del agente seguro: ¿se puede encender?</h3>
     <p>El agente trabaja solo y toca archivos, cuentas y mensajes. La regla del keynote es el mínimo privilegio: solo accede a lo que la tarea necesita, y alguien lo supervisa. Marca lo que ya está garantizado.</p>
     <div class="tool">
+      <p class="nota" style="margin-top:0">Los ítems 2, 4 y 10 son obligatorios: sin cualquiera de ellos el resultado no pasa de piloto con supervisión.</p>
       <div class="check" id="chk"></div>
       <div class="veredito" id="chkRes"></div>
       <p class="nota">Basado en el principio del mínimo privilegio y en los riesgos del OWASP Top 10 para aplicaciones con agentes (2026), traducido para quien no es técnico. La versión en texto está en <a href="https://github.com/inematds/empresa-de-ia/blob/main/kit/checklist-agente-seguro.md" target="_blank" rel="noopener"><code>kit/checklist-agente-seguro.md</code></a> (en portugués).</p>
@@ -406,7 +407,7 @@ var T={
     ['Piloto solo con supervisión.','Se puede probar con una persona revisando cada respuesta. Cierra los ítems pendientes durante el piloto.'],
     ['Listo para el piloto.','Las garantías principales están en su lugar. Sigue midiendo y revisando el registro cada semana.']
   ],
-  obrig:'Faltan ítems obligatorios (2, 4 y 10): sin ellos no pasa de piloto con supervisión.',
+  obrig:'Falta ítem obligatorio: ', obrig2:'sin él no pasa de piloto con supervisión.',
   marcados:'ítems garantizados'
 };
 (function(){
@@ -508,7 +509,7 @@ function chk(){
   var lv=n<=5?0:(n<=8?1:2), falta=!(marks[1]&&marks[3]&&marks[9]); if(falta&&lv==2)lv=1;
   var v=T.vered[lv], box=document.getElementById('chkRes');
   box.className='veredito '+['bad','warn','ok'][lv];
-  box.innerHTML='<strong>'+n+'/10 '+T.marcados+' · '+v[0]+'</strong><br><span class="mut">'+v[1]+(falta&&n>5?'<br>'+T.obrig:'')+'</span>';
+  box.innerHTML='<strong>'+n+'/10 '+T.marcados+' · '+v[0]+'</strong><br><span class="mut">'+v[1]+(falta&&n>5?'<br>'+T.obrig+[1,3,9].filter(function(i){return !marks[i]}).map(function(i){return i+1}).join(', ')+' — '+T.obrig2:'')+'</span>';
 }
 document.getElementById('chk').addEventListener('change',chk); chk();
 </script>

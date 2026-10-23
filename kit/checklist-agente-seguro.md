@@ -19,5 +19,7 @@ Regra de fundo: **privilégio mínimo**, ou seja, o agente só acessa o que a ta
 - 6 a 8: **piloto só com supervisão.** Uma pessoa olha cada resposta enquanto você fecha o resto.
 - 9 ou 10: **pronto para o piloto.** Siga medindo e revisando o registro toda semana.
 
+**Obrigatórios:** os itens 2, 4 e 10. Sem qualquer um deles, o máximo é **piloto só com supervisão**, mesmo com 9 marcados.
+
 Base: princípio do privilégio mínimo e OWASP Top 10 for Agentic Applications 2026 (genai.owasp.org), traduzidos para quem não é técnico.
 Versão interativa: https://inematds.github.io/empresa-de-ia/guia/#guia
