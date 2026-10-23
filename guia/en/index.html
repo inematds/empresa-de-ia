@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your AI company — produce AI, don't just consume it</title>
+<meta name="description" content="Free kit for small and mid-sized businesses to become AI companies: Process X-ray, cost-per-task calculator and safe agent checklist, plus the INEMA course track.">
+<link rel="alternate" hreflang="pt-BR" href="https://inematds.github.io/empresa-de-ia/guia/">
+<link rel="alternate" hreflang="en" href="https://inematds.github.io/empresa-de-ia/guia/en/">
+<link rel="alternate" hreflang="es" href="https://inematds.github.io/empresa-de-ia/guia/es/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c0c10; --bg2:#14141b; --card:#16161e; --line:#272730;
+    --txt:#e9e9ee; --mut:#9a9aa6; --amb:#FACC15; --amb2:#f0c070; --sky:#38bdf8; --pro:#cbd5e1;
+    --ok:#7CE0C6; --warn:#F2B45C; --bad:#E0736F;
+    color-scheme:dark;
+  }
+  body.light{
+    --bg:#f6f7f9; --bg2:#eceef2; --card:#ffffff; --line:#e1e3ea;
+    --txt:#1a1a22; --mut:#5b5b68; --amb:#a16207; --amb2:#a16207; --sky:#0369a1; --pro:#b45309;
+    --ok:#0E6B55; --warn:#8F520A; --bad:#b42318;
+    color-scheme:light;
+  }
+  body.light .hero .glow{opacity:.5}
+  body.light pre{background:#0e0e14;color:#d6d6e0}
+  body.light pre .c{color:#8a8a98}
+  body.light .btn{background:#FACC15}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:Sora,sans-serif;line-height:1.15;margin:0}
+  a{color:var(--amb);text-decoration:none}
+  body.light a:not(.btn):not(.inema):not(.pro):not(.brand){color:#854d0e;text-decoration:underline;text-decoration-color:#FACC15;text-decoration-thickness:3px}
+  code,pre{font-family:"JetBrains Mono",monospace}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+  .mut{color:var(--mut)} .amb{color:var(--amb)}
+  body.light .amb{color:var(--txt);background:linear-gradient(transparent 55%,#FACC15 55%)}
+  .chip{display:inline-block;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amb);font-weight:600;font-family:Sora}
+  nav{position:sticky;top:0;z-index:30;backdrop-filter:blur(12px);background:rgba(12,12,16,.78);border-bottom:1px solid var(--line)}
+  body.light nav{background:rgba(246,247,249,.85)}
+  nav .wrap{display:flex;align-items:center;gap:22px;height:60px}
+  nav .brand{display:flex;align-items:center;gap:8px;font-family:Sora;font-weight:800;letter-spacing:-.02em;color:var(--amb)}
+  nav .brand .emoji{font-size:1.25rem}
+  nav .sep{color:var(--mut);opacity:.45}
+  nav .inema{color:var(--sky);font-weight:600;font-size:.88rem;font-family:Sora}
+  nav .pro{color:var(--pro);font-weight:600;font-size:.88rem;font-family:Sora}
+  nav .clubpro{display:inline-flex;align-items:center;gap:6px}
+  nav .links{margin-left:auto;display:flex;align-items:center;gap:20px;font-size:.92rem}
+  nav .links a.sec{color:var(--mut);text-decoration:none!important} nav .links a.sec:hover{color:var(--txt)}
+  .lang{display:inline-flex;gap:2px;font-family:Sora;font-size:.78rem}
+  .lang a{color:var(--mut)!important;padding:.2em .45em;border-radius:6px;text-decoration:none!important} .lang a.on{color:var(--amb)!important;background:rgba(250,204,21,.12)}
+  .tgl{background:var(--bg2);border:1px solid var(--line);color:var(--txt);width:38px;height:38px;border-radius:10px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:1.05rem}
+  .tgl:hover{border-color:var(--amb)}
+  .btn{display:inline-block;background:var(--amb);color:#1a1206!important;font-weight:600;padding:.6em 1.05em;border-radius:10px;font-family:Sora;border:none;cursor:pointer;font-size:.95rem;text-decoration:none!important}
+  .btn.ghost{background:transparent!important;color:var(--txt)!important;border:1px solid var(--line)}
+  .btn.sm{padding:.4em .8em;font-size:.85rem}
+  @media(max-width:860px){nav .links a.sec{display:none}}
+  @media(max-width:520px){nav .wrap{gap:8px;padding:8px 14px;height:auto;flex-wrap:wrap} nav .links{gap:8px;margin-left:0;width:100%;justify-content:space-between} nav .btn{padding:.45em .7em;font-size:.82rem} .tgl{width:34px;height:34px}}
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero .glow{position:absolute;inset:-40% -20% auto auto;width:70%;height:600px;background:radial-gradient(closest-side,rgba(250,204,21,.18),transparent 70%);pointer-events:none}
+  .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:74px 22px}
+  .hero h1{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:800;letter-spacing:-.025em}
+  .hero p.lead{font-size:1.18rem;color:var(--mut);margin:1.1em 0 1.6em;max-width:36ch}
+  .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .hero figure{margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000}
+  .hero figure img{width:100%;height:auto;display:block}
+  .resumo{padding:38px 0 34px;border-bottom:1px solid var(--line)}
+  .resumo p{font-size:1.12rem;line-height:1.7;max-width:74ch;margin:.55em 0 0}
+  @media(max-width:780px){.hero .wrap{grid-template-columns:1fr;padding:48px 22px}}
+  section{padding:62px 0;border-bottom:1px solid var(--line)}
+  section h2{font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:800;letter-spacing:-.02em}
+  section .sub{color:var(--mut);margin:.6em 0 2em;max-width:66ch}
+  .grid{display:grid;gap:16px}
+  .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g2{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:820px){.g3,.g4{grid-template-columns:1fr 1fr}}
+  @media(max-width:540px){.g2,.g3,.g4{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;min-width:0}
+  .card h3{font-size:1.05rem;margin-bottom:.4em}
+  .card p{color:var(--mut);font-size:.95rem;margin:0}
+  .card ul{margin:.5em 0 0;padding-left:1.1em;color:var(--mut);font-size:.95rem}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+  .flow span{background:var(--bg2);border:1px solid var(--line);border-radius:999px;padding:.45em .9em;font-size:.88rem;font-family:Sora;font-weight:600}
+  .flow .arr{color:var(--amb);border:none;background:none;padding:0 .1em}
+  pre{background:#0a0a0e;border:1px solid var(--line);border-radius:12px;padding:16px 18px;overflow:auto;font-size:.86rem;line-height:1.6;color:#d6d6e0}
+  pre .c{color:#6f6f7c} pre .k{color:var(--amb2)} pre .s{color:#9ece6a}
+  .step{display:grid;grid-template-columns:46px minmax(0,1fr);gap:16px;margin-bottom:34px}
+  .step>div{min-width:0}
+  @media(max-width:600px){.step{grid-template-columns:1fr;gap:10px}}
+  .step .b{width:46px;height:46px;border-radius:12px;background:#FACC15;color:#1a1206;font-family:Sora;font-weight:800;font-size:1.25rem;display:flex;align-items:center;justify-content:center}
+  .step h3{font-size:1.15rem;margin-bottom:.3em}
+  .step p{color:var(--mut);margin:.2em 0 .8em}
+  .phase{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .phase:last-child{border:none}
+  .phase .tag{flex:0 0 92px;font-family:Sora;font-weight:800;color:var(--amb)}
+  .phase .d strong{display:block;margin-bottom:.2em}
+  .phase .d span{color:var(--mut);font-size:.95rem}
+  footer{padding:46px 0;text-align:center;color:var(--mut);font-size:.9rem}
+  .pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:.3em .8em;font-size:.78rem;color:var(--mut);margin:4px}
+  /* bolo */
+  .bolo{display:grid;gap:8px;margin:0 0 26px}
+  .camada{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr) minmax(0,1fr);gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px}
+  .camada .n{font-family:Sora;font-weight:800;color:var(--amb)}
+  .camada .p{font-size:.95rem}
+  .camada .t{font-size:.88rem;color:var(--mut)}
+  .camada.head{background:transparent;border:none;padding:0 16px;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);font-family:Sora}
+  @media(max-width:620px){.camada{grid-template-columns:1fr;gap:2px}.camada.head{display:none}}
+  /* ferramentas */
+  .tool{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin-top:6px}
+  .row{display:grid;grid-template-columns:minmax(0,2.2fr) repeat(5,minmax(0,1fr)) 34px;gap:8px;align-items:end;padding:10px 0;border-bottom:1px dashed var(--line)}
+  .row:last-of-type{border-bottom:none}
+  .row.h{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);font-family:Sora;border-bottom:1px solid var(--line);padding-top:0}
+  .row .lb{display:none;font-size:.75rem;color:var(--mut);font-family:Sora;letter-spacing:.04em;text-transform:uppercase;margin-bottom:2px}
+  @media(max-width:860px){.row{grid-template-columns:1fr 1fr}.row.h{display:none}.row .lb{display:block}.row .nome{grid-column:1/-1}.row .del{grid-column:2;justify-self:end}}
+  input,select{width:100%;background:var(--bg2);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:.5em .6em;font:inherit;font-size:.92rem;min-width:0}
+  input:focus,select:focus{outline:2px solid var(--amb);outline-offset:1px}
+  .del{background:transparent;border:1px solid var(--line);color:var(--mut);border-radius:8px;width:34px;height:36px;cursor:pointer;font-size:1rem}
+  .del:hover{border-color:var(--bad);color:var(--bad)}
+  .acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .res{margin-top:18px;display:grid;gap:10px}
+  .rank{display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;align-items:start;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+  .rank .pos{width:40px;height:40px;border-radius:10px;background:#FACC15;color:#1a1206;font-family:Sora;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .rank h4{margin:0 0 .2em;font-family:Sora;font-size:1rem}
+  .rank p{margin:0;color:var(--mut);font-size:.92rem}
+  .calc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+  @media(max-width:760px){.calc{grid-template-columns:1fr 1fr}}
+  @media(max-width:460px){.calc{grid-template-columns:1fr}}
+  .calc label{font-size:.85rem;color:var(--mut);display:block;margin-bottom:3px}
+  .calc .hint{font-size:.78rem;color:var(--mut);margin-top:3px;display:block}
+  .kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:18px}
+  @media(max-width:760px){.kpis{grid-template-columns:1fr 1fr}}
+  .kpi{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+  .kpi .v{font-family:Sora;font-weight:800;font-size:clamp(1rem,4.4vw,1.45rem);color:var(--amb);white-space:nowrap}
+  .kpi{min-width:0;overflow:hidden}
+  body.light .kpi .v{color:var(--txt)}
+  .kpi .l{font-size:.82rem;color:var(--mut)}
+  .nota{font-size:.85rem;color:var(--mut);margin-top:12px}
+  .check{display:grid;gap:8px}
+  .check label{display:grid;grid-template-columns:24px minmax(0,1fr);gap:10px;align-items:start;background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer}
+  .check input{width:20px;height:20px;margin-top:2px;accent-color:#FACC15}
+  .check b{font-family:Sora;font-size:.95rem;display:block}
+  .check span{font-size:.88rem;color:var(--mut)}
+  .veredito{margin-top:14px;border-radius:12px;padding:14px 16px;border:1px solid var(--line);background:var(--bg2)}
+  .veredito strong{font-family:Sora}
+  .veredito.bad{border-color:var(--bad)} .veredito.bad strong{color:var(--bad)}
+  .veredito.warn{border-color:var(--warn)} .veredito.warn strong{color:var(--warn)}
+  .veredito.ok{border-color:var(--ok)} .veredito.ok strong{color:var(--ok)}
+  .trilha a.card{display:block;text-decoration:none!important;color:var(--txt)!important}
+  .trilha a.card:hover{border-color:var(--amb)}
+  .trilha .tg{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amb);font-family:Sora;font-weight:600}
+  body.light .trilha .tg{color:#854d0e}
+  .dado{font-family:Sora;font-weight:800;font-size:2rem;color:var(--amb)}
+  body.light .dado{color:var(--txt)}
+  .fonte{font-size:.8rem;color:var(--mut);display:block;margin-top:.4em}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="brand" href="#top"><span class="emoji">🏭</span> Your AI company</a>
+  <span class="sep">|</span>
+  <span class="clubpro">
+    <a class="inema" href="https://inema.club" target="_blank" rel="noopener">INEMA.CLUB</a>
+    <span class="sep">-</span>
+    <a class="pro" href="https://inema.pro" target="_blank" rel="noopener">PRO</a>
+  </span>
+  <div class="links">
+    <a class="sec" href="#oque">What it is</a>
+    <a class="sec" href="#guia">Tools</a>
+    <a class="sec" href="#trilha">Track</a>
+    <a class="sec" href="#roadmap">Coming next</a>
+    <span class="lang"><a href="../">PT</a><a class="on" href="./">EN</a><a href="../es/">ES</a></span>
+    <button class="tgl" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">🌙</button>
+    <a class="btn" href="https://github.com/inematds/empresa-de-ia" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</div></nav>
+
+<header class="hero" id="top">
+  <div class="glow"></div>
+  <div class="wrap">
+    <div>
+      <span class="chip">Free kit for small and mid-sized businesses</span>
+      <h1>Your <span class="amb">AI</span> company, starting today</h1>
+      <p class="lead">Find out which process to hand to an agent first, what it costs in real money and whether it is safe to switch on.</p>
+      <div class="cta">
+        <a class="btn" href="#guia">Start the X-ray</a>
+        <a class="btn ghost" href="https://github.com/inematds/empresa-de-ia" target="_blank" rel="noopener">See it on GitHub</a>
+      </div>
+    </div>
+    <figure><img src="../assets/banner-en.jpg" alt="Your AI company banner: produce AI, don't just consume it"></figure>
+  </div>
+</header>
+
+<section id="resumo" class="resumo"><div class="wrap">
+  <span class="chip">In short</span>
+  <p>This is a free kit for the owner of a small or mid-sized business to move past casual ChatGPT use and put an AI agent to work on a real process. There are three tools that run right here on the page, no sign-up: the Process X-ray shows where to start, the calculator shows what it costs and what it pays back, and the checklist tells you whether the agent is safe to switch on. Then the track leads to INEMA courses and kits to build each agent. All you need is a browser; nothing leaves your computer.</p>
+</div></section>
+
+<section id="oque"><div class="wrap">
+  <span class="chip">What it is</span>
+  <h2>The five-layer cake, sized for your business</h2>
+  <p class="sub">In Berlin, in October 2026, Jensen Huang (Nvidia) said every company will become an artificial intelligence company and that the way forward is to produce AI, not just consume it. He explained it with a five-layer cake. Here is the same idea translated for the owner of a small business.</p>
+  <figure style="margin:0 0 26px;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000"><img src="../assets/banner-grade-en.jpg" alt="The six pieces of the Your AI company kit" loading="lazy" style="width:100%;display:block"></figure>
+  <div class="bolo">
+    <div class="camada head"><div>Jensen's layer</div><div>In your business</div><div>Kit piece</div></div>
+    <div class="camada"><div class="n">5 · Applications</div><div class="p">Your business processes: customer service, scheduling, billing, sales</div><div class="t">Process X-ray</div></div>
+    <div class="camada"><div class="n">4 · Models</div><div class="p">Which AI does each task and what it charges per task</div><div class="t">Cost calculator</div></div>
+    <div class="camada"><div class="n">3 · AI factory</div><div class="p">Where the AI runs: cloud service, API or your own machine</div><div class="t">AI factory guide (next piece)</div></div>
+    <div class="camada"><div class="n">2 · Computers</div><div class="p">The agent running isolated, with only the access it needs</div><div class="t">Safe agent checklist</div></div>
+    <div class="camada"><div class="n">1 · Energy</div><div class="p">People, data and the context of your business</div><div class="t">INEMA track</div></div>
+  </div>
+  <p class="sub" style="margin-top:0"><strong>In practice:</strong> an agent that answers opening hours and prices on the clinic's WhatsApp on its own, and hands what it doesn't know to the front desk. That is layer 5 running on top of the other four.</p>
+  <div class="card" style="margin-bottom:26px"><h3>📖 Words in this guide</h3><ul>
+    <li><b>Agent</b>: an AI that doesn't just chat, it does the task (reads the message, checks the calendar, replies, logs it). ChatGPT answers; the agent works.</li>
+    <li><b>Token</b>: a piece of text the AI reads or writes (about 4 letters). AI is priced per million tokens.</li>
+    <li><b>API</b>: the door through which one system talks to another; the agent uses the AI through it and pays per use.</li>
+    <li><b>Isolated environment</b>: an account or machine just for the agent, where it can't reach the rest of the company.</li>
+    <li><b>Password vault</b>: a protected place for passwords and keys; the agent uses them without ever seeing the password text.</li>
+    <li><b>OWASP</b>: an open foundation that publishes the most widely used security risk lists in the world.</li>
+    <li><b>CSV</b>: a plain-text spreadsheet that opens in Excel and Google Sheets.</li>
+  </ul></div>
+  <div class="grid g3">
+    <div class="card"><span class="dado">41%</span><h3>Don't know where to start</h3><p>It is the number one barrier for small businesses, ahead of cost (31%). The X-ray tackles exactly that.</p><span class="fonte">Serasa Experian, survey of SMEs, 2026</span></div>
+    <div class="card"><span class="dado">80%</span><h3>Buy off the shelf</h3><p>Of the companies that use AI, 80% buy ready-made software and only 26% build their own solution. That is Jensen's "consume".</p><span class="fonte">Cetic.br, TIC Empresas 2025</span></div>
+    <div class="card"><span class="dado">40%+</span><h3>Agent projects canceled</h3><p>Forecast through 2027, due to cost, unclear value and uncontrolled risk. The calculator and the checklist exist so you don't end up in that number.</p><span class="fonte">Gartner, forecast of June 2025</span></div>
+  </div>
+</div></section>
+
+<section id="fluxo"><div class="wrap">
+  <span class="chip">How it works</span>
+  <h2>From a loose process to your first measured agent</h2>
+  <p class="sub">One process at a time. You pick, calculate, check safety, run a 30-day pilot and measure. If it works, move on to the next in line.</p>
+  <div class="flow">
+    <span>1 · X-ray</span><span class="arr">→</span>
+    <span>2 · Cost</span><span class="arr">→</span>
+    <span>3 · Safety</span><span class="arr">→</span>
+    <span>4 · 30-day pilot</span><span class="arr">→</span>
+    <span>5 · Measure</span><span class="arr">→</span>
+    <span>Next in line</span>
+  </div>
+</div></section>
+
+<section id="pre"><div class="wrap">
+  <span class="chip">Prerequisites</span>
+  <h2>Just a browser</h2>
+  <p class="sub">The tools run on this page. Your numbers are stored only in your browser; nothing is sent to anyone.</p>
+  <div class="grid g3">
+    <div class="card"><h3>📝 A list of tasks</h3><p>The tasks that repeat every week in the business. If you don't know them by heart, ask the team to write them down for three days.</p></div>
+    <div class="card"><h3>⏱️ Rough time and volume</h3><p>How many times a week each task happens and how many minutes it takes. An estimate is enough to get started.</p></div>
+    <div class="card"><h3>📂 Optional: the kit as a spreadsheet</h3><p>On GitHub, the <a href="https://github.com/inematds/empresa-de-ia/tree/main/kit" target="_blank" rel="noopener"><code>kit/</code></a> folder has the X-ray and the calculator as CSV to open in Excel or Google Sheets, and the checklist as text (in Portuguese).</p></div>
+  </div>
+</div></section>
+
+<section id="guia"><div class="wrap">
+  <span class="chip">User guide · the tools</span>
+  <h2>Three tools, in this order</h2>
+  <p class="sub">The page comes pre-filled with an example from a small clinic. Replace it with your own business data.</p>
+
+  <div class="step"><div class="b">1</div><div>
+    <h3>Process X-ray: where to start</h3>
+    <p>List the tasks that repeat. For each one, say how many times a week it happens, how many minutes it takes, whether the rule is clear, whether the information is already on the computer and how much damage a mistake would do. The X-ray returns the queue of your first three processes and the INEMA kit for each one.</p>
+    <div class="tool" id="raiox">
+      <div class="row h"><div>Task</div><div>Times/week</div><div>Minutes</div><div>Clear rule?</div><div>Digital data?</div><div>If it goes wrong</div><div></div></div>
+      <div id="rxRows"></div>
+      <div class="acts">
+        <button class="btn sm ghost" id="rxAdd">+ Task</button>
+        <button class="btn sm" id="rxGo">Refresh the queue</button>
+        <button class="btn sm ghost" id="rxCsv">Download CSV</button>
+        <button class="btn sm ghost" id="rxReset">Back to the example</button>
+      </div>
+      <div class="res" id="rxRes"></div>
+      <p class="nota">How the score works: hours per month × rule clarity × data availability ÷ risk. It is a ruler for ranking, not the truth. A high-risk task can go in the queue, but only with a person approving every answer.</p>
+    </div>
+  </div></div>
+
+  <div class="step"><div class="b">2</div><div>
+    <h3>Calculator: what it costs and what it pays back</h3>
+    <p>Take the first one in the queue. Compare today's cost (people doing it) with the agent's cost (the AI bill plus someone's time reviewing). The metric that matters is cost per task, counting the review and the tasks that go back to a person.</p>
+    <div class="tool" id="calc">
+      <div class="calc">
+        <div><label for="cQtd">Tasks per month</label><input id="cQtd" type="number" min="0" value="600"></div>
+        <div><label for="cMin">Minutes of a person per task</label><input id="cMin" type="number" min="0" step="0.5" value="6"></div>
+        <div><label for="cHora">Hourly cost of the person (US$)</label><input id="cHora" type="number" min="0" step="0.5" value="8"><span class="hint">Salary + payroll costs ÷ hours worked</span></div>
+        <div><label for="cPct">% the agent solves on its own</label><input id="cPct" type="number" min="0" max="100" value="70"><span class="hint">The rest goes back to a person</span></div>
+        <div><label for="cRev">Review minutes per agent task</label><input id="cRev" type="number" min="0" step="0.5" value="0.5"></div>
+        <div><label for="cTok">Tokens per task (thousands)</label><input id="cTok" type="number" min="0" step="0.5" value="20"><span class="hint">Rough range: a short reply with context, 2 to 10 thousand; an agent with several steps, 20 to 100 thousand. The real number shows in your AI provider's usage dashboard.</span></div>
+        <div><label for="cPreco">Price per million tokens (US$)</label><input id="cPreco" type="number" min="0" step="0.1" value="3"><span class="hint">Check the price of the model you use</span></div>
+        <div><label for="cDolar">Exchange rate (US$ = 1)</label><input id="cDolar" type="number" min="0" step="0.01" value="1"><span class="hint">Keep 1 if you think in dollars</span></div>
+        <div><label for="cFixo">Fixed cost per month (US$)</label><input id="cFixo" type="number" min="0" value="30"><span class="hint">What you pay each month for the agent to exist, used or not: subscription, server, official WhatsApp number…</span></div>
+      </div>
+      <div class="kpis">
+        <div class="kpi"><div class="v" id="kHoje">–</div><div class="l">monthly cost today</div></div>
+        <div class="kpi"><div class="v" id="kAgente">–</div><div class="l">monthly cost with the agent</div></div>
+        <div class="kpi"><div class="v" id="kEcon">–</div><div class="l">difference per month</div></div>
+        <div class="kpi"><div class="v" id="kHoras">–</div><div class="l">hours freed per month</div></div>
+        <div class="kpi"><div class="v" id="kTarefa">–</div><div class="l">cost per task with the agent (counting the ones that go back to a person)</div></div>
+        <div class="kpi"><div class="v" id="kTarefaH">–</div><div class="l">cost per task today</div></div>
+        <div class="kpi"><div class="v" id="kIA">–</div><div class="l">AI bill alone per month</div></div>
+        <div class="kpi"><div class="v" id="kAno">–</div><div class="l">difference over 12 months</div></div>
+      </div>
+      <p class="nota">The pre-filled values are an example, not any vendor's price. Measure your baseline before the pilot (how many tasks, how much time) and redo the math with the real numbers after 30 days.</p>
+    </div>
+  </div></div>
+
+  <div class="step"><div class="b">3</div><div>
+    <h3>Safe agent checklist: can you switch it on?</h3>
+    <p>The agent works on its own and touches files, accounts and messages. The rule from the keynote is least privilege: it only accesses what the task needs, and someone keeps an eye on it. Tick what is already guaranteed.</p>
+    <div class="tool">
+      <div class="check" id="chk"></div>
+      <div class="veredito" id="chkRes"></div>
+      <p class="nota">Based on the principle of least privilege and on the risks in the OWASP Top 10 for Agentic Applications (2026), translated for non-technical readers. The text version is in <a href="https://github.com/inematds/empresa-de-ia/blob/main/kit/checklist-agente-seguro.md" target="_blank" rel="noopener"><code>kit/checklist-agente-seguro.md</code></a> (in Portuguese).</p>
+    </div>
+  </div></div>
+
+  <div class="step"><div class="b">4</div><div>
+    <h3>30-day pilot and measurement</h3>
+    <p>Build the agent for the first process with the kit the X-ray recommends. Over the 30 days, write down every week: how many tasks it did, how many went back to a person, how much the AI bill was and how many complaints there were. At the end, redo the calculator with those numbers. If the difference is positive and the checklist is still green, move on to the second in line.</p>
+  </div></div>
+</div></section>
+
+<section id="trilha" class="trilha"><div class="wrap">
+  <span class="chip">INEMA track</span>
+  <h2>Where to learn how to build each agent</h2>
+  <p class="sub">All open and free. The X-ray already points to one of these for each task in your queue.</p>
+  <div class="grid g3">
+    <a class="card" href="https://inematds.github.io/criaagentes/guia/" target="_blank" rel="noopener"><span class="tg">Customer service</span><h3>criaagentes</h3><p>A WhatsApp assistant that never makes up an answer (in Portuguese).</p></a>
+    <a class="card" href="https://inematds.github.io/atende-clinica/guia/" target="_blank" rel="noopener"><span class="tg">Service by industry</span><h3>Atende kits</h3><p>Clinic, gym, physiotherapy and nutrition, ready to adapt (in Portuguese).</p></a>
+    <a class="card" href="https://inematds.github.io/reserva-restaurante/guia/" target="_blank" rel="noopener"><span class="tg">Scheduling and bookings</span><h3>Booking kits</h3><p>Restaurant and hotel, with bookings handled by the agent (in Portuguese).</p></a>
+    <a class="card" href="https://inematds.github.io/formacao-dica-diagnostico-v72/" target="_blank" rel="noopener"><span class="tg">Diagnosis</span><h3>DICA 1 · Customer Map</h3><p>How to map a company's processes before automating (in Portuguese).</p></a>
+    <a class="card" href="https://inematds.github.io/profissional2027/" target="_blank" rel="noopener"><span class="tg">Implementation</span><h3>Professional 2027</h3><p>AI implementer for SMEs: processes, ROI and delivery (in Portuguese).</p></a>
+    <a class="card" href="https://inematds.github.io/empresas-2027-v62/" target="_blank" rel="noopener"><span class="tg">People and processes</span><h3>Companies of 2027</h3><p>How people, processes and agents reorganize (in Portuguese).</p></a>
+    <a class="card" href="https://inematds.github.io/curso-agente-sob-controle-v2/" target="_blank" rel="noopener"><span class="tg">Safety</span><h3>Agent Under Control</h3><p>Use AI agents without getting burned (in Portuguese).</p></a>
+    <a class="card" href="https://inematds.github.io/camada-contexto/guia/" target="_blank" rel="noopener"><span class="tg">Business context</span><h3>camada-contexto</h3><p>What the agent needs to know about your business, in one place (in Portuguese).</p></a>
+    <a class="card" href="https://inematds.github.io/curso-agent-runtime/" target="_blank" rel="noopener"><span class="tg">Tools</span><h3>INEMA Agent Runtime</h3><p>Get AI to use the tools you already have, with rules (in Portuguese).</p></a>
+    <a class="card" href="https://inematds.github.io/gestao-ia-processos-v72/" target="_blank" rel="noopener"><span class="tg">Management</span><h3>AI Management · Processes</h3><p>How to manage processes with agents day to day (in Portuguese).</p></a>
+    <a class="card" href="https://inematds.github.io/local-ai-masterclass/" target="_blank" rel="noopener"><span class="tg">AI factory</span><h3>Local AI Masterclass</h3><p>AI on your own machine: privacy and 24-hour agents (in Portuguese).</p></a>
+    <a class="card" href="https://inematds.github.io/do-chat-ao-agente-v72/" target="_blank" rel="noopener"><span class="tg">First steps</span><h3>From chat to agent</h3><p>From ChatGPT to your first agent, in four steps (in Portuguese).</p></a>
+  </div>
+</div></section>
+
+<section id="roadmap"><div class="wrap">
+  <span class="chip">Coming next</span>
+  <h2>What comes after</h2>
+  <p class="sub">This is the first release. The next pieces complete the cake.</p>
+  <div class="phase"><div class="tag">Live</div><div class="d"><strong>X-ray, calculator and checklist</strong><span>The three tools on this page and the spreadsheet kit on GitHub.</span></div></div>
+  <div class="phase"><div class="tag">Next</div><div class="d"><strong>SME AI factory guide</strong><span>When to use a cloud service, an API or your own machine, with the math for each, plus a public test of open models in Portuguese on small-business tasks.</span></div></div>
+  <div class="phase"><div class="tag">Next</div><div class="d"><strong>Isolated agent, step by step</strong><span>Running the company's agent in a separate environment, with only the access it needs.</span></div></div>
+  <div class="phase"><div class="tag">Later</div><div class="d"><strong>Kits for new industries</strong><span>Retail, e-commerce, real estate, accounting and law firms, with WhatsApp, instant payments and invoicing.</span></div></div>
+  <div class="phase"><div class="tag">Later</div><div class="d"><strong>30-day challenge</strong><span>Each participant measures one process before and after and publishes the case. Real measured cases are still missing in Brazil.</span></div></div>
+</div></section>
+
+<footer>
+  <div class="wrap">
+    <div class="pill">HTML + JS in the browser</div><div class="pill">No sign-up</div><div class="pill">CSV kit</div>
+    <p style="margin-top:18px">Your AI company · based on Jensen Huang's keynote at GTC Berlin (10/21/2026) and on research by Cetic.br, Serasa Experian, Gartner and OWASP ·
+      <a href="https://github.com/inematds/empresa-de-ia">inematds/empresa-de-ia</a> ·
+      <a href="https://www.youtube.com/watch?v=t-mBC3kuhLM" target="_blank" rel="noopener">video</a> ·
+      <a href="https://inema.club">INEMA.CLUB</a></p>
+  </div>
+</footer>
+
+<script>
+/* Interface texts (translate only this block in the en/ and es/ versions) */
+var T={
+  lang:'en', moeda:'USD',
+  tarefa:'Task', vezes:'Times/week', minutos:'Minutes', regra:'Clear rule?', dado:'Digital data?', risco:'If it goes wrong', remover:'Remove task',
+  regraOp:['No','Somewhat','Yes'], dadoOp:['No','Partly','Yes'], riscoOp:['Minor','Medium','Serious'],
+  cat:'Type', catOp:{atend:'Customer service',agenda:'Scheduling and bookings',doc:'Documents and finance',venda:'Sales and marketing',interno:'Internal routine'},
+  novaTarefa:'New task',
+  horasMes:'h per month', nota:'score',
+  vazio:'Fill in at least one task with times per week and minutes.',
+  aviso:'Serious risk: start with a person approving every answer.',
+  csvNome:'process-x-ray.csv',
+  csvCab:['task','type','times_week','minutes','clear_rule','digital_data','if_wrong','hours_month','score'],
+  sugere:'Start with:',
+  exemplo:[
+    ['Answer questions about hours and prices on WhatsApp','atend',120,3,2,2,0],
+    ['Confirm next-day appointments','agenda',60,2,2,2,0],
+    ['Enter invoices and bills into the books','doc',25,8,2,1,1],
+    ['Post on social media','venda',5,40,1,1,0],
+    ['Reply to a patient complaint','atend',4,20,0,1,2]
+  ],
+  kits:{
+    atend:['criaagentes, WhatsApp (in Portuguese)','https://inematds.github.io/criaagentes/guia/'],
+    agenda:['atende kits (clinic, gym) or booking kits (in Portuguese)','https://inematds.github.io/atende-clinica/guia/'],
+    doc:['INEMA Agent Runtime (in Portuguese)','https://inematds.github.io/curso-agent-runtime/'],
+    venda:['From chat to agent, step 4 (social media) (in Portuguese)','https://inematds.github.io/do-chat-ao-agente-redes-v72/'],
+    interno:['AI Management · Processes (in Portuguese)','https://inematds.github.io/gestao-ia-processos-v72/']
+  },
+  checklist:[
+    ["The agent's task is written down",'It knows what it does, what it does not do and when to hand over to a person.'],
+    ['Access only to what the task needs',"Specific folders, spreadsheets and accounts. Never the owner's password or the whole inbox."],
+    ['Passwords kept out of the chat',"Keys and passwords are stored in a vault or configuration, never pasted into the agent's text."],
+    ['Irreversible actions need approval','Paying, deleting, mass sending or changing prices only with a person confirming.'],
+    ['Runs separately','In an isolated account, machine or environment, not on a personal computer with everything open.'],
+    ['List of allowed sites and systems','It only talks to the services the task uses.'],
+    ['Everything is logged','Every action becomes a record, and someone reviews that record every week.'],
+    ['Minimum customer data','Only what is needed, and you know where it is stored (data protection law: LGPD in Brazil, GDPR in Europe).'],
+    ['Outside text is not an order',"Email, websites or customer messages are information; the agent does not follow instructions hidden in those texts."],
+    ['Off switch and a plan for mistakes','You know how to stop the agent, who answers the customer and how to fix things.']
+  ],
+  vered:[
+    ['Do not switch it on yet.','Basic safeguards are missing. Fix the unticked items before the agent touches customers or money.'],
+    ['Pilot only with supervision.','You can test with a person checking every answer. Close the missing items during the pilot.'],
+    ['Ready for the pilot.','The main safeguards are in place. Keep measuring and reviewing the log every week.']
+  ],
+  obrig:'Required items missing (2, 4 and 10): without them it stays a supervised pilot.',
+  marcados:'items guaranteed'
+};
+(function(){
+  var KEY='empresa-de-ia-theme';
+  var b=document.body, t=document.getElementById('themeToggle');
+  try{ if(localStorage.getItem(KEY)==='light'){ b.classList.add('light'); t.textContent='☀️'; } }catch(e){}
+  t.addEventListener('click',function(){
+    var light=b.classList.toggle('light');
+    t.textContent=light?'☀️':'🌙';
+    try{ localStorage.setItem(KEY, light?'light':'dark'); }catch(e){}
+  });
+})();
+function ls(k,v){try{if(v===undefined)return JSON.parse(localStorage.getItem(k));localStorage.setItem(k,JSON.stringify(v));}catch(e){return null}}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function opts(arr,sel){return arr.map(function(o,i){return '<option value="'+i+'"'+(i==sel?' selected':'')+'>'+esc(o)+'</option>'}).join('')}
+/* ---------- Raio-X ---------- */
+var RX='empresa-de-ia-raiox-'+T.lang, rows=ls(RX)||T.exemplo.map(function(r){return r.slice()});
+function rxRender(){
+  var h='';
+  rows.forEach(function(r,i){
+    var cats=Object.keys(T.catOp).map(function(k){return '<option value="'+k+'"'+(k==r[1]?' selected':'')+'>'+esc(T.catOp[k])+'</option>'}).join('');
+    h+='<div class="row" data-i="'+i+'">'+
+      '<div class="nome"><span class="lb">'+T.tarefa+'</span><input data-k="0" value="'+esc(r[0])+'" aria-label="'+T.tarefa+'"><select data-k="1" aria-label="'+T.cat+'" style="margin-top:6px">'+cats+'</select></div>'+
+      '<div><span class="lb">'+T.vezes+'</span><input data-k="2" type="number" min="0" value="'+r[2]+'" aria-label="'+T.vezes+'"></div>'+
+      '<div><span class="lb">'+T.minutos+'</span><input data-k="3" type="number" min="0" value="'+r[3]+'" aria-label="'+T.minutos+'"></div>'+
+      '<div><span class="lb">'+T.regra+'</span><select data-k="4" aria-label="'+T.regra+'">'+opts(T.regraOp,r[4])+'</select></div>'+
+      '<div><span class="lb">'+T.dado+'</span><select data-k="5" aria-label="'+T.dado+'">'+opts(T.dadoOp,r[5])+'</select></div>'+
+      '<div><span class="lb">'+T.risco+'</span><select data-k="6" aria-label="'+T.risco+'">'+opts(T.riscoOp,r[6])+'</select></div>'+
+      '<button class="del" title="'+T.remover+'" aria-label="'+T.remover+'">×</button></div>';
+  });
+  document.getElementById('rxRows').innerHTML=h;
+}
+function rxScore(r){
+  var horas=(+r[2]||0)*(+r[3]||0)*4.33/60;
+  var clara=[0.4,0.7,1][+r[4]], dado=[0.4,0.7,1][+r[5]], risco=[1,1.6,3][+r[6]];
+  return {horas:horas, nota:horas*clara*dado/risco};
+}
+function rxGo(){
+  var list=rows.map(function(r){var s=rxScore(r);return {r:r,h:s.horas,n:s.nota}}).filter(function(x){return x.h>0&&x.r[0]});
+  list.sort(function(a,b){return b.n-a.n});
+  var out=document.getElementById('rxRes');
+  if(!list.length){out.innerHTML='<p class="nota">'+T.vazio+'</p>';return}
+  out.innerHTML=list.slice(0,3).map(function(x,i){
+    var k=T.kits[x.r[1]]||T.kits.interno;
+    return '<div class="rank"><div class="pos">'+(i+1)+'</div><div><h4>'+esc(x.r[0])+'</h4><p>'+
+      x.h.toLocaleString(T.lang,{maximumFractionDigits:1})+' '+T.horasMes+' · '+T.nota+' '+x.n.toLocaleString(T.lang,{maximumFractionDigits:1})+
+      ' · '+T.sugere+' <a href="'+k[1]+'" target="_blank" rel="noopener">'+esc(k[0])+'</a>'+
+      (+x.r[6]==2?'<br>'+T.aviso:'')+'</p></div></div>';
+  }).join('');
+}
+document.getElementById('rxRows').addEventListener('input',function(e){
+  var row=e.target.closest('.row'); if(!row||e.target.dataset.k===undefined)return;
+  var i=+row.dataset.i, k=+e.target.dataset.k, v=e.target.value;
+  rows[i][k]=(k===0||k===1)?v:+v; ls(RX,rows); rxGo();
+});
+document.getElementById('rxRows').addEventListener('click',function(e){
+  if(!e.target.classList.contains('del'))return;
+  rows.splice(+e.target.closest('.row').dataset.i,1); ls(RX,rows); rxRender(); rxGo();
+});
+document.getElementById('rxAdd').onclick=function(){rows.push([T.novaTarefa,'interno',5,10,1,1,0]);ls(RX,rows);rxRender()};
+document.getElementById('rxGo').onclick=rxGo;
+document.getElementById('rxReset').onclick=function(){rows=T.exemplo.map(function(r){return r.slice()});ls(RX,rows);rxRender();rxGo()};
+document.getElementById('rxCsv').onclick=function(){
+  var q=function(s){return '"'+String(s).replace(/"/g,'""')+'"'};
+  var lines=[T.csvCab.join(',')].concat(rows.map(function(r){var s=rxScore(r);
+    return [q(r[0]),q(T.catOp[r[1]]||r[1]),r[2],r[3],q(T.regraOp[r[4]]),q(T.dadoOp[r[5]]),q(T.riscoOp[r[6]]),s.horas.toFixed(1),s.nota.toFixed(1)].join(',')}));
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob(['﻿'+lines.join('\n')],{type:'text/csv'}));
+  a.download=T.csvNome; document.body.appendChild(a); a.click(); a.remove();
+};
+rxRender(); rxGo();
+/* ---------- Calculadora ---------- */
+var CK='empresa-de-ia-calc-'+T.lang, ids=['cQtd','cMin','cHora','cPct','cRev','cTok','cPreco','cDolar','cFixo'];
+var saved=ls(CK); if(saved) ids.forEach(function(id){ if(saved[id]!==undefined) document.getElementById(id).value=saved[id]; });
+function money(v){return v.toLocaleString(T.lang,{style:'currency',currency:T.moeda,maximumFractionDigits:v<10&&v>-10?2:0})}
+function calc(){
+  var g=function(id){return +document.getElementById(id).value||0}, s={};
+  ids.forEach(function(id){s[id]=document.getElementById(id).value}); ls(CK,s);
+  var qtd=g('cQtd'), min=g('cMin'), hora=g('cHora'), pct=Math.min(100,g('cPct'))/100, rev=g('cRev');
+  var ia1=g('cTok')*1000/1e6*g('cPreco')*g('cDolar');
+  var hoje=qtd*min/60*hora;
+  var feitas=qtd*pct, voltam=qtd-feitas;
+  var ia=qtd*ia1;
+  var agente=ia+g('cFixo')+feitas*rev/60*hora+voltam*min/60*hora;
+  var horas=feitas*(min-rev)/60;
+  var set=function(id,v){document.getElementById(id).textContent=v};
+  set('kHoje',money(hoje)); set('kAgente',money(agente)); set('kEcon',money(hoje-agente));
+  set('kHoras',Math.max(0,horas).toLocaleString(T.lang,{maximumFractionDigits:0})+' h');
+  set('kTarefa',qtd>0?money(agente/qtd):'–');
+  set('kTarefaH',money(min/60*hora)); set('kIA',money(ia)); set('kAno',money((hoje-agente)*12));
+}
+ids.forEach(function(id){document.getElementById(id).addEventListener('input',calc)}); calc();
+/* ---------- Checklist ---------- */
+var XK='empresa-de-ia-check-'+T.lang, marks=ls(XK)||[];
+document.getElementById('chk').innerHTML=T.checklist.map(function(c,i){
+  return '<label><input type="checkbox" data-i="'+i+'"'+(marks[i]?' checked':'')+'><div><b>'+(i+1)+'. '+esc(c[0])+'</b><span>'+esc(c[1])+'</span></div></label>'}).join('');
+function chk(){
+  var n=0; document.querySelectorAll('#chk input').forEach(function(el){marks[+el.dataset.i]=el.checked; if(el.checked)n++}); ls(XK,marks);
+  var lv=n<=5?0:(n<=8?1:2), falta=!(marks[1]&&marks[3]&&marks[9]); if(falta&&lv==2)lv=1;
+  var v=T.vered[lv], box=document.getElementById('chkRes');
+  box.className='veredito '+['bad','warn','ok'][lv];
+  box.innerHTML='<strong>'+n+'/10 '+T.marcados+' · '+v[0]+'</strong><br><span class="mut">'+v[1]+(falta&&n>5?'<br>'+T.obrig:'')+'</span>';
+}
+document.getElementById('chk').addEventListener('change',chk); chk();
+</script>
+</body>
+</html>

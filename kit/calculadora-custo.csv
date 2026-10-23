@@ -1,0 +1,17 @@
+﻿campo;valor;como preencher
+tarefas por mês;600;quantas vezes a tarefa acontece no mês
+minutos de uma pessoa por tarefa;6;tempo médio hoje
+custo da hora da pessoa (R$);35;salário + encargos dividido pelas horas trabalhadas
+% que o agente resolve sozinho;70;o resto volta para uma pessoa
+minutos de revisão por tarefa do agente;0,5;tempo de alguém conferindo
+tokens por tarefa (mil);20;somando todas as chamadas do agente
+preço por milhão de tokens (US$);3;confira o preço do modelo que você usa (valor de exemplo)
+dólar (R$);5,40;cotação do dia
+custo fixo por mês (R$);150;assinatura / servidor / WhatsApp oficial
+;;
+custo por mês hoje;=B2*B3/60*B4;
+conta da IA por mês;=B2*B7*1000/1000000*B8*B9;
+custo por mês com o agente;=B13+B10+B2*B5/100*B6/60*B4+B2*(1-B5/100)*B3/60*B4;
+diferença por mês;=B12-B14;
+horas liberadas por mês;=B2*B5/100*(B3-B6)/60;
+custo por tarefa com o agente (contando as que voltam);=B14/B2;
