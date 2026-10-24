@@ -14,7 +14,7 @@ The underlying rule: **one process at a time, measured before and after**. You d
 | 5 | 30-day pilot | 4 weeks | Weekly measurement spreadsheet | 4 measurements: tasks, handbacks to a person, cost, complaints |
 | 6 | Report and next in the queue | 1 h | Calculator with the real numbers | Before × after and the decision: continue, adjust or stop |
 
-In step 4, the checklist must give at least **supervised pilot** and have the mandatory items 2, 4 and 10. Without that, the pilot does not start.
+In step 4, the checklist needs to give at least **pilot with supervision**. Without the mandatory items 2, 4 and 10, the pilot only runs with a person approving each response.
 
 ## 1. Diagnostic conversation script (1 hour)
 

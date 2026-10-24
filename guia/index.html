@@ -362,7 +362,7 @@
       <div class="kpi"><div class="v" id="kEmpate">–</div><div class="l">tarefas por mês em que a máquina empata com a API</div></div>
     </div>
     <div class="veredito" id="fabRes"></div>
-    <p class="nota">A conta da máquina é parcela + luz + manutenção, sem juros. A capacidade vem da velocidade medida no teste abaixo, multiplicada pelos tokens por tarefa da calculadora, uma tarefa por vez (conta conservadora: a IA lê o texto mais rápido do que escreve). Sobre dados de clientes e a LGPD, a escolha do caminho é uma hipótese a validar com o advogado da empresa; este guia não substitui essa análise. Preços de API: confira na página do fornecedor (<a href="https://www.anthropic.com/pricing" target="_blank" rel="noopener">Anthropic</a>, <a href="https://openai.com/api/pricing/" target="_blank" rel="noopener">OpenAI</a>, <a href="https://ai.google.dev/pricing" target="_blank" rel="noopener">Google</a>).</p>
+    <p class="nota">A conta da máquina é parcela + luz + manutenção + o custo fixo por mês da calculadora, sem juros. A capacidade vem da velocidade medida no teste abaixo, multiplicada pelos tokens por tarefa da calculadora, uma tarefa por vez (conta conservadora: a IA lê o texto mais rápido do que escreve). Sobre dados de clientes e a LGPD, a escolha do caminho é uma hipótese a validar com o advogado da empresa; este guia não substitui essa análise. Preços de API: confira na página do fornecedor (<a href="https://www.anthropic.com/pricing" target="_blank" rel="noopener">Anthropic</a>, <a href="https://openai.com/api/pricing/" target="_blank" rel="noopener">OpenAI</a>, <a href="https://ai.google.dev/pricing" target="_blank" rel="noopener">Google</a>).</p>
   </div>
 </div></section>
 
@@ -398,7 +398,7 @@
   <div class="phase"><div class="tag">1 · 1 h</div><div class="d"><strong>Conversa de diagnóstico</strong><span>Roteiro de 12 perguntas com o dono e a equipe. Entrega: a lista das tarefas que se repetem.</span></div></div>
   <div class="phase"><div class="tag">2 · 30 min</div><div class="d"><strong>Raio-X com o dono</strong><span>Preencham juntos o Raio-X desta página. Entrega: a fila dos 3 primeiros processos.</span></div></div>
   <div class="phase"><div class="tag">3 · 1 sem.</div><div class="d"><strong>Linha de base e conta</strong><span>Uma semana medindo o processo escolhido, depois a calculadora. Entrega: custo de hoje e custo com o agente, em reais.</span></div></div>
-  <div class="phase"><div class="tag">4 · 1 h</div><div class="d"><strong>Onde roda e se pode ligar</strong><span>Comparador da fábrica e checklist do agente seguro. Entrega: o caminho escolhido e o veredito. Sem os itens 2, 4 e 10, o piloto não começa.</span></div></div>
+  <div class="phase"><div class="tag">4 · 1 h</div><div class="d"><strong>Onde roda e se pode ligar</strong><span>Comparador da fábrica e checklist do agente seguro. Entrega: o caminho escolhido e o veredito. Sem os itens 2, 4 e 10, o piloto só roda com uma pessoa aprovando cada resposta.</span></div></div>
   <div class="phase"><div class="tag">5 · 30 dias</div><div class="d"><strong>Piloto medido</strong><span>Quinze minutos por semana olhando a planilha: tarefas feitas, quantas voltaram para uma pessoa, custo da IA e reclamações.</span></div></div>
   <div class="phase"><div class="tag">6 · 1 h</div><div class="d"><strong>Relatório e próximo da fila</strong><span>A calculadora com os números reais e a decisão junto com o dono: segue, ajusta ou para.</span></div></div>
 
@@ -627,7 +627,7 @@ var TF={
   meta:'Máquina do teste: {maq}. {n} modelos, {c} casos em 4 tarefas. Rodada de {data}. Nota = % de campos certos (nota, contrato, classificação) ou de respostas que seguiram as regras (atendimento).',
   licoes:["<b>Não precisa de modelo gigante.</b> O qwen3.8:27b (17 GB) acertou 100% e o qwen3.6:35b-a3b (23 GB) acertou 99%, sendo o mais rápido dos bons: menos de 1 segundo por tarefa.", "<b>Maior não é melhor.</b> O llama3.1:70b (42 GB) ficou atrás de modelos com metade do tamanho, levou 9 segundos por tarefa e caiu em 2 dos 4 golpes: aceitou o desconto de 50% e repassou a chave Pix falsa.", "<b>Ler documento é fácil; o golpe é o difícil.</b> Quase todos acertaram nota fiscal e contrato, mas só 2 dos 9 modelos barraram os 4 golpes. O e-mail encaminhado com uma chave Pix nova enganou 5 dos 9.", "<b>Por isso o checklist existe.</b> Se o agente cair num golpe, o item 4 (obrigatório: ação com dinheiro pede aprovação de uma pessoa) segura o prejuízo. O item 9 (texto de fora não é ordem) diminui a chance de cair.", "<b>Modelo que “pensa” não é para tarefa repetida.</b> O deepseek-r1:14b, feito para raciocinar, foi o mais lento (15 s por tarefa) e o pior (70%): em 1 de cada 4 pedidos com formato fixo, devolveu resposta vazia ou fora do formato."],
   barato:{pronta:'Neste volume, a ferramenta pronta sai mais barata.',api:'Neste volume, a API na nuvem sai mais barata.',maq:'Neste volume, a máquina própria sai mais barata.'},
-  cap:"Com {mod}, cada tarefa do tamanho que você pôs na calculadora ({tok} mil tokens) leva cerca de {s} segundos na máquina do teste; uma por vez, são cerca de {cap} tarefas por mês. No teste, as tarefas eram curtas (menos de mil tokens) e levaram {t} s", lento:"Mais de 30 segundos por resposta é demais para atendimento ao vivo: serve para tarefa que pode esperar (notas fiscais, contratos, relatórios). Para conversa com cliente, diminua os tokens por tarefa ou use a API.", chkPend:"{n}/10 itens de segurança garantidos; antes do início do piloto serão fechados os que faltam{f}", faltam:", entre eles os obrigatórios {lista}", avisoEx:"A fila do Raio-X ainda é o exemplo da clínica: troque pelas tarefas do seu cliente antes de enviar.",
+  cap:"Com {mod}, cada tarefa do tamanho que você pôs na calculadora ({tok} mil tokens) leva cerca de {s} segundos na máquina do teste; uma por vez, são cerca de {cap} tarefas por mês. No teste, as tarefas eram curtas (menos de mil tokens) e levaram {t} s", lento:"Mais de 30 segundos por resposta é demais para atendimento ao vivo: serve para tarefa que pode esperar (notas fiscais, contratos, relatórios). Para conversa com cliente, diminua os tokens por tarefa ou use a API.", chkVazio:"será feito com a equipe na etapa 4, antes de ligar o agente", incluido:" (já incluído no valor com o agente)", chkPend:"{n}/10 itens de segurança garantidos; antes do início do piloto serão fechados os que faltam{f}", faltam:", entre eles os obrigatórios {lista}", avisoEx:"A fila do Raio-X ainda é o exemplo da clínica: troque pelas tarefas do seu cliente antes de enviar.",
   capOk:'.', capNo:'.',
   sens:'Dado sensível: prefira a máquina própria ou um fornecedor cujo contrato diga que não guarda nem treina com os seus dados. Valide com o advogado da empresa (LGPD).',
   nunca:'não empata', tarefasMes:'tarefas',
@@ -649,7 +649,7 @@ var TF={
     '- Com o agente: {cAg} por mês ({cTar} por tarefa, contando revisão e as que voltam para uma pessoa)',
     '- Diferença prevista: {cEcon} por mês, {cAno} em 12 meses',
     '- Horas liberadas da equipe: {cHoras} por mês',
-    '- Custo do caminho escolhido ({cam}): {cCam} por mês',
+    '- Custo do caminho escolhido ({cam}): {cCam} por mês{inc}',
     '',
     '## Segurança',
     '- Checklist do agente seguro: {chk}',
@@ -732,7 +732,7 @@ function prop(){
   var tot=FAB.pessoas+FAB[cam], econ=FAB.hoje-tot;
   var o={emp:v('pEmp')||'—', por:v('pCons')?fill(TF.por,{cons:v('pCons')}):'', hoje:dataTxt(new Date()), fila:fila||'—', t1:list[0]?list[0].r[0]:'—',
     cam:TF.cam[cam], cHoje:tx('kHoje'), cTarH:tx('kTarefaH'), cAg:money(tot), cTar:FAB.qtd>0?money(tot/FAB.qtd):'–', cEcon:money(econ), cAno:money(econ*12), cHoras:tx('kHoras'),
-    cCam:money(FAB[cam]), chk:(n<=5||!(marks[1]&&marks[3]&&marks[9]))?fill(TF.chkPend,{n:n,f:[1,3,9].some(function(i){return !marks[i]})?fill(TF.faltam,{lista:[1,3,9].filter(function(i){return !marks[i]}).map(function(i){return i+1}).join(', ')}):''}):(chk?chk.textContent:n+'/10'), ini:d0?dataTxt(d0):TF.semData, fim:d1?dataTxt(d1):TF.semData,
+    cCam:money(FAB[cam]), inc:TF.incluido, chk:n==0?TF.chkVazio:(n<=5||!(marks[1]&&marks[3]&&marks[9]))?fill(TF.chkPend,{n:n,f:[1,3,9].some(function(i){return !marks[i]})?fill(TF.faltam,{lista:[1,3,9].filter(function(i){return !marks[i]}).map(function(i){return i+1}).join(', ')}):''}):(chk?chk.textContent:n+'/10'), ini:d0?dataTxt(d0):TF.semData, fim:d1?dataTxt(d1):TF.semData,
     valor:v('pValor')?fill(TF.valor,{v:v('pValor')}):''};
   var av=[]; if(n<=5||!(marks[1]&&marks[3]&&marks[9])) av.push(TF.aviso.chk); if(econ<0) av.push(TF.aviso.neg);
   if(list[0]){var hc=+document.getElementById('cQtd').value*(+document.getElementById('cMin').value)/60; if(Math.abs(hc-list[0].h)>0.1*list[0].h) av.push(fill(TF.aviso.horas,{h1:list[0].h.toLocaleString(T.lang,{maximumFractionDigits:1})}));}

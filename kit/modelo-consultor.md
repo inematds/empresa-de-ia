@@ -14,7 +14,7 @@ A regra de fundo: **um processo de cada vez, medido antes e depois**. Você não
 | 5 | Piloto de 30 dias | 4 semanas | Planilha de medição semanal | 4 medições: tarefas, voltas para pessoa, custo, reclamações |
 | 6 | Relatório e próximo da fila | 1 h | Calculadora com os números reais | Antes × depois e a decisão: segue, ajusta ou para |
 
-Na etapa 4, o checklist precisa dar pelo menos **piloto com supervisão** e ter os itens obrigatórios 2, 4 e 10. Sem isso, o piloto não começa.
+Na etapa 4, o checklist precisa dar pelo menos **piloto com supervisão**. Sem os itens obrigatórios 2, 4 e 10, o piloto só roda com uma pessoa aprovando cada resposta.
 
 ## 1. Roteiro da conversa de diagnóstico (1 hora)
 
