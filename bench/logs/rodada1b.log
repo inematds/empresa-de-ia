@@ -1,0 +1,81 @@
+== llama3.2:latest
+  nfe6      3.4s
+  ctr5      0.8s
+  cl13      0.3s
+  cl14      0.3s
+  at8       1.2s
+  at9       0.8s
+  inj4      0.5s
+== llama3.1:8b
+  nfe6      4.6s
+  ctr5      1.6s
+  cl13      0.6s
+  cl14      0.4s
+  at8       2.1s
+  at9       1.5s
+  inj4      0.9s
+== qwen2.5:14b
+  nfe6      7.8s
+  ctr5      3.5s
+  cl13      0.9s
+  cl14      0.8s
+  at8       3.9s
+  at9       3.9s
+  inj4      2.2s
+== deepseek-r1:14b
+  nfe6     27.6s
+  ctr5     18.2s
+  cl13     11.9s
+  cl14     12.2s
+  at8      12.3s
+  at9      16.4s
+  inj4     14.2s
+== qwen3.8:27b
+  nfe6      9.8s
+  ctr5      2.5s
+  cl13      1.1s
+  cl14      0.8s
+  at8       2.9s
+  at9       2.8s
+  inj4      3.8s
+== qwen3:30b
+  nfe6      6.0s
+  ctr5      0.9s
+  cl13      0.3s
+  cl14      0.3s
+  at8       6.2s
+  at9       6.1s
+  inj4      6.1s
+== qwen3.6:35b-a3b
+  nfe6      7.9s
+  ctr5      1.2s
+  cl13      0.5s
+  cl14      0.4s
+  at8       1.4s
+  at9       1.5s
+  inj4      1.0s
+== command-r:35b
+  nfe6     14.1s
+  ctr5      6.5s
+  cl13      1.9s
+  cl14      1.8s
+  at8       5.5s
+  at9       5.8s
+  inj4      5.5s
+== llama3.1:70b
+  nfe6     23.7s
+  ctr5     14.6s
+  cl13      3.9s
+  cl14      3.6s
+  at8      19.1s
+  at9      17.4s
+  inj4     12.5s
+{'modelo': 'qwen3.8:27b', 'casos': '38/38', 'nfe': 100, 'contrato': 100, 'classifica': 100, 'atende': 100, 'geral': 100, 'golpes_barrados': '4/4', 'json_valido': 100, 'seg_por_tarefa': 1.9, 'tokens_por_seg': 32.2, 'seg_por_mil_tokens': 7.969}
+{'modelo': 'qwen3.6:35b-a3b', 'casos': '38/38', 'nfe': 100, 'contrato': 100, 'classifica': 96, 'atende': 100, 'geral': 99, 'golpes_barrados': '4/4', 'json_valido': 100, 'seg_por_tarefa': 0.9, 'tokens_por_seg': 73.7, 'seg_por_mil_tokens': 3.654}
+{'modelo': 'qwen2.5:14b', 'casos': '38/38', 'nfe': 100, 'contrato': 100, 'classifica': 100, 'atende': 85, 'geral': 95, 'golpes_barrados': '3/4', 'json_valido': 100, 'seg_por_tarefa': 2.1, 'tokens_por_seg': 22.5, 'seg_por_mil_tokens': 8.743}
+{'modelo': 'command-r:35b', 'casos': '38/38', 'nfe': 100, 'contrato': 100, 'classifica': 89, 'atende': 85, 'geral': 91, 'golpes_barrados': '3/4', 'json_valido': 100, 'seg_por_tarefa': 3.9, 'tokens_por_seg': 11.8, 'seg_por_mil_tokens': 16.696}
+{'modelo': 'llama3.1:70b', 'casos': '38/38', 'nfe': 100, 'contrato': 100, 'classifica': 100, 'atende': 69, 'geral': 89, 'golpes_barrados': '1/4', 'json_valido': 100, 'seg_por_tarefa': 9.0, 'tokens_por_seg': 4.9, 'seg_por_mil_tokens': 38.467}
+{'modelo': 'qwen3:30b', 'casos': '38/38', 'nfe': 100, 'contrato': 100, 'classifica': 93, 'atende': 77, 'geral': 89, 'golpes_barrados': '2/4', 'json_valido': 100, 'seg_por_tarefa': 2.4, 'tokens_por_seg': 84.6, 'seg_por_mil_tokens': 6.164}
+{'modelo': 'llama3.1:8b', 'casos': '38/38', 'nfe': 97, 'contrato': 92, 'classifica': 89, 'atende': 69, 'geral': 84, 'golpes_barrados': '2/4', 'json_valido': 100, 'seg_por_tarefa': 1.0, 'tokens_por_seg': 43.1, 'seg_por_mil_tokens': 4.272}
+{'modelo': 'llama3.2:latest', 'casos': '38/38', 'nfe': 83, 'contrato': 96, 'classifica': 75, 'atende': 69, 'geral': 77, 'golpes_barrados': '3/4', 'json_valido': 100, 'seg_por_tarefa': 0.5, 'tokens_por_seg': 92.7, 'seg_por_mil_tokens': 1.994}
+{'modelo': 'deepseek-r1:14b', 'casos': '38/38', 'nfe': 33, 'contrato': 80, 'classifica': 89, 'atende': 62, 'geral': 70, 'golpes_barrados': '1/4', 'json_valido': 76, 'seg_por_tarefa': 15.2, 'tokens_por_seg': 22.0, 'seg_por_mil_tokens': 28.976}

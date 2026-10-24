@@ -154,6 +154,15 @@
   .dado{font-family:Sora;font-weight:800;font-size:2rem;color:var(--amb)}
   body.light .dado{color:var(--txt)}
   .fonte{font-size:.8rem;color:var(--mut);display:block;margin-top:.4em}
+  .tb{overflow-x:auto;border:1px solid var(--line);border-radius:14px}
+  .tb table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:720px}
+  .tb th,.tb td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+  .tb th{font-family:Sora;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);background:var(--bg2)}
+  .tb tr:last-child td{border-bottom:none}
+  .tb td.g{font-family:Sora;font-weight:800;color:var(--amb)}
+  body.light .tb td.g{color:#854d0e}
+  .tb tr.top td{background:color-mix(in srgb,var(--amb) 8%,transparent)}
+  nav .links a.sec{white-space:nowrap}
 </style>
 </head>
 <body>
@@ -169,8 +178,8 @@
   <div class="links">
     <a class="sec" href="#oque">O que é</a>
     <a class="sec" href="#guia">Ferramentas</a>
-    <a class="sec" href="#trilha">Trilha</a>
-    <a class="sec" href="#roadmap">Próximas peças</a>
+    <a class="sec" href="#fabrica">Fábrica</a>
+    <a class="sec" href="#consultor">Consultoria</a>
     <span class="lang"><a class="on" href="./">PT</a><a href="en/">EN</a><a href="es/">ES</a></span>
     <button class="tgl" id="themeToggle" aria-label="Alternar tema" title="Alternar tema">🌙</button>
     <a class="btn" href="https://github.com/inematds/empresa-de-ia" target="_blank" rel="noopener">GitHub</a>
@@ -195,7 +204,7 @@
 
 <section id="resumo" class="resumo"><div class="wrap">
   <span class="chip">Em resumo</span>
-  <p>Este é um kit gratuito para o dono de pequena ou média empresa sair do uso solto do ChatGPT e colocar um agente de IA para trabalhar num processo de verdade. São três ferramentas que funcionam aqui na página, sem cadastro: o Raio-X de Processos aponta por onde começar, a calculadora mostra quanto custa e quanto devolve, e o checklist diz se o agente está seguro para ligar. Depois, a trilha leva aos cursos e kits do INEMA para montar cada agente. Você só precisa do navegador; nada sai do seu computador.</p>
+  <p>Este é um kit gratuito para o dono de pequena ou média empresa sair do uso solto do ChatGPT e colocar um agente de IA para trabalhar num processo de verdade. São ferramentas que funcionam aqui na página, sem cadastro: o Raio-X de Processos aponta por onde começar, a calculadora mostra quanto custa e quanto devolve, o checklist diz se o agente está seguro para ligar e o comparador da fábrica mostra se vale mais a ferramenta pronta, a API ou uma máquina própria, com um teste de modelos abertos em português. Quem faz consultoria encontra no fim o modelo para aplicar tudo isso num cliente. Depois, a trilha leva aos cursos e kits do INEMA para montar cada agente. Você só precisa do navegador; nada sai do seu computador.</p>
 </div></section>
 
 <section id="oque"><div class="wrap">
@@ -207,7 +216,7 @@
     <div class="camada head"><div>Camada do Jensen</div><div>Na sua empresa</div><div>Peça do kit</div></div>
     <div class="camada"><div class="n">5 · Aplicações</div><div class="p">Os processos do seu negócio: atender, agendar, cobrar, vender</div><div class="t">Raio-X de Processos</div></div>
     <div class="camada"><div class="n">4 · Modelos</div><div class="p">Qual IA faz cada tarefa e quanto ela cobra por tarefa</div><div class="t">Calculadora de custo</div></div>
-    <div class="camada"><div class="n">3 · Fábrica de IA</div><div class="p">Onde a IA roda: serviço na nuvem, API ou máquina própria</div><div class="t">Guia da fábrica (próxima peça)</div></div>
+    <div class="camada"><div class="n">3 · Fábrica de IA</div><div class="p">Onde a IA roda: serviço na nuvem, API ou máquina própria</div><div class="t">Comparador da fábrica e teste em português</div></div>
     <div class="camada"><div class="n">2 · Computadores</div><div class="p">O agente rodando isolado, só com o acesso que precisa</div><div class="t">Checklist do agente seguro</div></div>
     <div class="camada"><div class="n">1 · Energia</div><div class="p">Pessoas, dados e o contexto do seu negócio</div><div class="t">Trilha INEMA</div></div>
   </div>
@@ -216,6 +225,8 @@
     <li><b>Agente</b>: uma IA que não só conversa, mas faz a tarefa (lê a mensagem, consulta a agenda, responde, registra). O ChatGPT responde; o agente trabalha.</li>
     <li><b>Token</b>: pedaço de texto que a IA lê ou escreve (mais ou menos 4 letras). O preço da IA é cobrado por milhão de tokens.</li>
     <li><b>API</b>: a porta pela qual um sistema conversa com outro; é por ela que o agente usa a IA e paga por uso.</li>
+    <li><b>Modelo aberto</b>: uma IA que qualquer um pode baixar e rodar no próprio computador, de graça, sem pagar por tarefa a um fornecedor.</li>
+    <li><b>Ollama</b>: programa gratuito que baixa e roda modelos abertos no seu computador (<a href="https://ollama.com" target="_blank" rel="noopener">ollama.com</a>).</li>
     <li><b>Ambiente isolado</b>: uma conta ou máquina separada só para o agente, onde ele não alcança o resto da empresa.</li>
     <li><b>Cofre de senhas</b>: lugar protegido onde ficam senhas e chaves; o agente usa sem nunca ver o texto da senha.</li>
     <li><b>OWASP</b>: fundação aberta que publica as listas de riscos de segurança mais usadas no mundo.</li>
@@ -321,6 +332,97 @@
   </div></div>
 </div></section>
 
+<section id="fabrica"><div class="wrap">
+  <span class="chip">Fábrica de IA · camada 3</span>
+  <h2>Onde o seu agente roda: ferramenta pronta, API ou máquina própria</h2>
+  <p class="sub">É a pergunta que o Jensen chama de fábrica de IA. Para a pequena empresa, são três caminhos. Nenhum é o melhor sempre: a conta muda com o volume de tarefas e com o tipo de dado que o agente toca.</p>
+  <div class="grid g3">
+    <div class="card"><h3>📦 Ferramenta pronta</h3><p>Um atendente de WhatsApp pronto, um plano empresarial de chat. Você paga uma mensalidade fixa e começa no mesmo dia. Bom para testar. O limite é fazer só o que a ferramenta já faz, e os dados ficam com o fornecedor.</p></div>
+    <div class="card"><h3>☁️ API na nuvem</h3><p>O seu agente usa um modelo grande de um fornecedor e paga por uso (por milhão de tokens). Os modelos mais fortes estão aqui, e a conta cresce junto com o volume. Os dados passam pelo fornecedor: leia o contrato de uso de dados.</p></div>
+    <div class="card"><h3>🖥️ Máquina própria</h3><p>Um modelo aberto rodando num computador da empresa. Você paga a máquina e a luz, não por tarefa. Os dados não saem de casa. Os modelos são menores, então teste antes se eles dão conta da sua tarefa (o teste abaixo faz isso).</p></div>
+  </div>
+
+  <div class="tool" id="fab" style="margin-top:22px">
+    <p class="nota" style="margin-top:0">Usa as tarefas por mês, os tokens, o preço e o dólar da calculadora acima. Mude lá e a comparação acompanha.</p>
+    <div class="calc">
+      <div><label for="fPronta">Ferramenta pronta: mensalidade (R$)</label><input id="fPronta" type="number" min="0" value="400"><span class="hint">Quanto o fornecedor cobra por mês pelo plano que atende o seu volume; o preço costuma subir por faixa de mensagens</span></div>
+      <div><label for="fMaq">Máquina própria: preço (R$)</label><input id="fMaq" type="number" min="0" value="30000"><span class="hint">Exemplo. Ponha o orçamento que você recebeu</span></div>
+      <div><label for="fMeses">Pagar a máquina em (meses)</label><input id="fMeses" type="number" min="1" value="36"><span class="hint">Tempo de uso que você espera dela</span></div>
+      <div><label for="fW">Consumo da máquina (watts)</label><input id="fW" type="number" min="0" value="200"></div>
+      <div><label for="fHoras">Horas ligada por dia</label><input id="fHoras" type="number" min="0" max="24" value="24"></div>
+      <div><label for="fKwh">Tarifa de luz (R$ por kWh)</label><input id="fKwh" type="number" min="0" step="0.01" value="0.95"></div>
+      <div><label for="fManut">Manutenção e internet por mês (R$)</label><input id="fManut" type="number" min="0" value="100"></div>
+      <div><label for="fMod">Modelo na máquina (do teste abaixo)</label><select id="fMod"></select><span class="hint">Velocidade medida numa NVIDIA GB10 com 128 GB; um computador comum é bem mais lento</span></div>
+      <div><label for="fSens">O agente toca dado sensível?</label><select id="fSens"><option value="0">Não</option><option value="1">Sim (saúde, financeiro, documentos)</option></select></div>
+    </div>
+    <div class="kpis">
+      <div class="kpi"><div class="v" id="kPronta">–</div><div class="l">ferramenta pronta por mês</div></div>
+      <div class="kpi"><div class="v" id="kApi">–</div><div class="l">API na nuvem por mês</div></div>
+      <div class="kpi"><div class="v" id="kMaq">–</div><div class="l">máquina própria por mês</div></div>
+      <div class="kpi"><div class="v" id="kEmpate">–</div><div class="l">tarefas por mês em que a máquina empata com a API</div></div>
+    </div>
+    <div class="veredito" id="fabRes"></div>
+    <p class="nota">A conta da máquina é parcela + luz + manutenção, sem juros. A capacidade vem da velocidade medida no teste abaixo, multiplicada pelos tokens por tarefa da calculadora, uma tarefa por vez (conta conservadora: a IA lê o texto mais rápido do que escreve). Sobre dados de clientes e a LGPD, a escolha do caminho é uma hipótese a validar com o advogado da empresa; este guia não substitui essa análise. Preços de API: confira na página do fornecedor (<a href="https://www.anthropic.com/pricing" target="_blank" rel="noopener">Anthropic</a>, <a href="https://openai.com/api/pricing/" target="_blank" rel="noopener">OpenAI</a>, <a href="https://ai.google.dev/pricing" target="_blank" rel="noopener">Google</a>).</p>
+  </div>
+</div></section>
+
+<section id="teste"><div class="wrap">
+  <span class="chip">Teste em português · rodada 1</span>
+  <h2>Modelos abertos nas tarefas de pequena empresa</h2>
+  <p class="sub">Antes de comprar a máquina, a pergunta é se um modelo aberto dá conta da sua tarefa. Testamos modelos gratuitos em quatro tarefas comuns de PME, em português, numa máquina de mesa. A nota é calculada por regra fixa, sem opinião de ninguém.</p>
+  <div class="grid g4">
+    <div class="card"><h3>🧾 Ler nota fiscal</h3><p>Tirar CNPJ, número, data, total e itens de um trecho de NF-e. Tem pegadinha: desconto e frete mudam o total.</p></div>
+    <div class="card"><h3>📄 Resumir contrato</h3><p>Prazo, valor mensal, multa, índice de reajuste e foro de contratos de aluguel, serviço e sistema.</p></div>
+    <div class="card"><h3>🏷️ Classificar mensagem</h3><p>Agendamento, orçamento, reclamação, cancelamento ou dúvida, e se é urgente.</p></div>
+    <div class="card"><h3>💬 Atender pelas regras</h3><p>Responder clientes de uma pet shop só com as regras da casa, sem inventar preço, e barrar quatro tentativas de golpe.</p></div>
+  </div>
+  <div class="tb" style="margin-top:22px"><table id="benchTb"></table></div>
+  <p class="nota" id="benchMeta"></p>
+  <div class="card" style="margin-top:16px" id="benchLicoes"><h3>O que a rodada 1 mostrou</h3><ul id="benchLi"></ul></div>
+  <p class="nota">Rodada 1: casos inventados (nenhum dado real), temperatura zero (o modelo responde sempre igual), uma tentativa por caso, modelos já instalados na máquina. Não é um ranking definitivo: é um ponto de partida para você repetir o teste com as suas tarefas. Os casos, o script e os resultados estão em <a href="https://github.com/inematds/empresa-de-ia/tree/main/bench" target="_blank" rel="noopener"><code>bench/</code></a> e em <a href="https://github.com/inematds/empresa-de-ia/blob/main/kit/benchmark-pt.csv" target="_blank" rel="noopener"><code>kit/benchmark-pt.csv</code></a>.</p>
+  <p class="nota">Para repetir: instale o <a href="https://ollama.com" target="_blank" rel="noopener">Ollama</a> (gratuito). O modelo do exemplo ocupa 23 GB e pede uma máquina com pelo menos 32 GB de memória; num computador comum, comece pelo llama3.2 (2 GB). O resultado vai para a pasta <code>bench/minha-rodada</code>, separado da rodada publicada.</p>
+  <pre><span class="c"># repetir o teste na sua máquina (precisa do Ollama instalado)</span>
+<span class="k">git clone</span> <span class="s">https://github.com/inematds/empresa-de-ia</span> &amp;&amp; <span class="k">cd</span> empresa-de-ia
+<span class="k">ollama pull</span> qwen3.6:35b-a3b
+<span class="k">python3</span> bench/roda.py rodar --modelos qwen3.6:35b-a3b --saida bench/minha-rodada</pre>
+</div></section>
+
+<section id="consultor" class="trilha"><div class="wrap">
+  <span class="chip">Para quem faz consultoria</span>
+  <h2>O modelo para aplicar no cliente</h2>
+  <p class="sub">Se você presta consultoria de IA para pequenas empresas, este kit vira o seu método. São seis etapas, do primeiro café ao relatório do piloto, sempre um processo por vez e medido antes e depois. Você não vende "IA": vende uma tarefa que passa a custar menos e o número que prova isso.</p>
+  <div class="phase"><div class="tag">1 · 1 h</div><div class="d"><strong>Conversa de diagnóstico</strong><span>Roteiro de 12 perguntas com o dono e a equipe. Entrega: a lista das tarefas que se repetem.</span></div></div>
+  <div class="phase"><div class="tag">2 · 30 min</div><div class="d"><strong>Raio-X com o dono</strong><span>Preencham juntos o Raio-X desta página. Entrega: a fila dos 3 primeiros processos.</span></div></div>
+  <div class="phase"><div class="tag">3 · 1 sem.</div><div class="d"><strong>Linha de base e conta</strong><span>Uma semana medindo o processo escolhido, depois a calculadora. Entrega: custo de hoje e custo com o agente, em reais.</span></div></div>
+  <div class="phase"><div class="tag">4 · 1 h</div><div class="d"><strong>Onde roda e se pode ligar</strong><span>Comparador da fábrica e checklist do agente seguro. Entrega: o caminho escolhido e o veredito. Sem os itens 2, 4 e 10, o piloto não começa.</span></div></div>
+  <div class="phase"><div class="tag">5 · 30 dias</div><div class="d"><strong>Piloto medido</strong><span>Quinze minutos por semana olhando a planilha: tarefas feitas, quantas voltaram para uma pessoa, custo da IA e reclamações.</span></div></div>
+  <div class="phase"><div class="tag">6 · 1 h</div><div class="d"><strong>Relatório e próximo da fila</strong><span>A calculadora com os números reais e a decisão junto com o dono: segue, ajusta ou para.</span></div></div>
+
+  <div class="tool" id="prop" style="margin-top:22px">
+    <h3 style="margin-top:0">Montar o resumo para o cliente</h3>
+    <p class="nota" style="margin-top:0">Junta a fila do Raio-X, a conta da calculadora, o comparador da fábrica e o veredito do checklist num texto de proposta pronto para ajustar e enviar. Nada sai do seu navegador.</p>
+    <div class="calc">
+      <div><label for="pEmp">Empresa do cliente</label><input id="pEmp" value="Clínica Exemplo"></div>
+      <div><label for="pCons">Seu nome ou da sua consultoria</label><input id="pCons" value=""></div>
+      <div><label for="pIni">Início do piloto</label><input id="pIni" type="date"></div>
+      <div><label for="pCam">Caminho escolhido</label><select id="pCam"><option value="api">API na nuvem</option><option value="pronta">Ferramenta pronta</option><option value="maq">Máquina própria</option></select></div>
+      <div><label for="pValor">Valor do seu trabalho (opcional)</label><input id="pValor" value=""></div>
+    </div>
+    <div class="acts"><button class="btn sm" id="pGo">Montar o resumo</button><button class="btn sm ghost" id="pCopy">Copiar</button><button class="btn sm ghost" id="pMd">Baixar .md</button></div>
+    <div class="veredito warn" id="pAviso" style="display:none;margin-top:14px"></div>
+    <textarea id="pOut" rows="16" style="width:100%;margin-top:14px;background:var(--bg2);border:1px solid var(--line);color:var(--txt);border-radius:10px;padding:12px;font:.88rem/1.5 'JetBrains Mono',monospace" aria-label="Resumo para o cliente"></textarea>
+  </div>
+
+  <div class="grid g3" style="margin-top:22px">
+    <a class="card" href="https://github.com/inematds/empresa-de-ia/blob/main/kit/modelo-consultor.md" target="_blank" rel="noopener"><span class="tg">Kit do consultor</span><h3>modelo-consultor.md</h3><p>Roteiro das 12 perguntas, proposta de uma página, planilha do piloto e relatório de antes e depois.</p></a>
+    <a class="card" href="https://inematds.github.io/prof2030-consultor/" target="_blank" rel="noopener"><span class="tg">Curso</span><h3>Profissional 2030 · Consultor de IA</h3><p>Diagnóstico, piloto e medição de valor, em 8 aulas.</p></a>
+    <a class="card" href="https://inematds.github.io/consultoria2k/" target="_blank" rel="noopener"><span class="tg">Formação</span><h3>Consultor de IA · Do rótulo ao resultado</h3><p>Achar a restrição real e prescrever a solução mais simples que funciona.</p></a>
+    <a class="card" href="https://inematds.github.io/formacao-vendas-ia-consultoria-v72/" target="_blank" rel="noopener"><span class="tg">Vendas</span><h3>Playbook de consultoria</h3><p>Como vender e entregar consultoria de IA.</p></a>
+    <a class="card" href="https://inematds.github.io/formacao-dica-diagnostico-v72/" target="_blank" rel="noopener"><span class="tg">Diagnóstico</span><h3>DICA 1 · Mapa do Cliente</h3><p>Mapear os processos de uma empresa antes de automatizar.</p></a>
+    <a class="card" href="https://eventos.inema.pro/consultoria-ia/" target="_blank" rel="noopener"><span class="tg">Área</span><h3>Consultoria de IA</h3><p>Todos os cursos e kits de consultoria do INEMA num lugar.</p></a>
+  </div>
+</div></section>
+
 <section id="trilha" class="trilha"><div class="wrap">
   <span class="chip">Trilha INEMA</span>
   <h2>Onde aprender a montar cada agente</h2>
@@ -346,7 +448,8 @@
   <h2>O que vem depois</h2>
   <p class="sub">Esta é a primeira entrega. As próximas peças completam o bolo.</p>
   <div class="phase"><div class="tag">No ar</div><div class="d"><strong>Raio-X, calculadora e checklist</strong><span>As três ferramentas desta página e o kit em planilha no GitHub.</span></div></div>
-  <div class="phase"><div class="tag">Próxima</div><div class="d"><strong>Guia da fábrica de IA da PME</strong><span>Quando usar serviço na nuvem, API ou máquina própria, com a conta de cada um, e um teste público de modelos abertos em português nas tarefas de pequena empresa.</span></div></div>
+  <div class="phase"><div class="tag">No ar</div><div class="d"><strong>Fábrica de IA, teste em português e modelo do consultor</strong><span>Comparador entre ferramenta pronta, API e máquina própria, a rodada 1 do teste de modelos abertos e as seis etapas para aplicar o kit num cliente.</span></div></div>
+  <div class="phase"><div class="tag">Próxima</div><div class="d"><strong>Teste em português, rodada 2</strong><span>Mais modelos (inclusive os que pedem máquina maior) e tarefas enviadas pela comunidade.</span></div></div>
   <div class="phase"><div class="tag">Próxima</div><div class="d"><strong>Agente isolado passo a passo</strong><span>Rodar o agente da empresa num ambiente separado, só com o acesso que ele precisa.</span></div></div>
   <div class="phase"><div class="tag">Depois</div><div class="d"><strong>Kits de novos setores</strong><span>Varejo, e-commerce, imobiliária, contabilidade e advocacia, com WhatsApp, Pix e nota fiscal.</span></div></div>
   <div class="phase"><div class="tag">Depois</div><div class="d"><strong>Desafio 30 dias</strong><span>Cada participante mede um processo antes e depois e publica o caso. Casos reais medidos ainda faltam no Brasil.</span></div></div>
@@ -354,7 +457,7 @@
 
 <footer>
   <div class="wrap">
-    <div class="pill">HTML + JS no navegador</div><div class="pill">Sem cadastro</div><div class="pill">Kit em CSV</div>
+    <div class="pill">HTML + JS no navegador</div><div class="pill">Sem cadastro</div><div class="pill">Kit em CSV</div><div class="pill">Teste local com Ollama</div>
     <p style="margin-top:18px">Sua empresa de IA · baseado no keynote de Jensen Huang no GTC Berlim (21/10/2026) e em pesquisas Cetic.br, Serasa Experian, Gartner e OWASP ·
       <a href="https://github.com/inematds/empresa-de-ia">inematds/empresa-de-ia</a> ·
       <a href="https://www.youtube.com/watch?v=t-mBC3kuhLM" target="_blank" rel="noopener">vídeo</a> ·
@@ -512,6 +615,133 @@ function chk(){
   box.innerHTML='<strong>'+n+'/10 '+T.marcados+' · '+v[0]+'</strong><br><span class="mut">'+v[1]+(falta&&n>5?'<br>'+T.obrig+[1,3,9].filter(function(i){return !marks[i]}).map(function(i){return i+1}).join(', ')+' — '+T.obrig2:'')+'</span>';
 }
 document.getElementById('chk').addEventListener('change',chk); chk();
+</script>
+<script>
+/* Fábrica, teste e consultor. Textos: traduzir só o bloco TF nas versões en/ e es/ */
+var TF={
+  cols:['Modelo','Tamanho','Geral','Nota fiscal','Contrato','Classificar','Atender','Golpes barrados','Segundos por tarefa'],
+  meta:'Máquina do teste: {maq}. {n} modelos, {c} casos em 4 tarefas. Rodada de {data}. Nota = % de campos certos (nota, contrato, classificação) ou de respostas que seguiram as regras (atendimento).',
+  licoes:["<b>Não precisa de modelo gigante.</b> O qwen3.8:27b (17 GB) acertou 100% e o qwen3.6:35b-a3b (23 GB) acertou 99%, sendo o mais rápido dos bons: menos de 1 segundo por tarefa.", "<b>Maior não é melhor.</b> O llama3.1:70b (42 GB) ficou atrás de modelos com metade do tamanho, levou 9 segundos por tarefa e caiu em 2 dos 4 golpes: aceitou o desconto de 50% e repassou a chave Pix falsa.", "<b>Ler documento é fácil; o golpe é o difícil.</b> Quase todos acertaram nota fiscal e contrato, mas só 2 dos 9 modelos barraram os 4 golpes. O e-mail encaminhado com uma chave Pix nova enganou 5 dos 9.", "<b>Por isso o checklist existe.</b> Mesmo o melhor modelo precisa do item 9 (texto de fora não é ordem) e do item 4 (ação com dinheiro pede aprovação de uma pessoa).", "<b>Modelo que “pensa” não é para tarefa repetida.</b> O deepseek-r1:14b, feito para raciocinar, foi o mais lento (15 s por tarefa) e o pior (70%): em 1 de cada 4 pedidos com formato fixo, devolveu resposta vazia ou fora do formato."],
+  barato:{pronta:'Neste volume, a ferramenta pronta sai mais barata.',api:'Neste volume, a API na nuvem sai mais barata.',maq:'Neste volume, a máquina própria sai mais barata.'},
+  cap:'Com {mod}, a máquina faz cerca de {cap} tarefas por mês do tamanho que você pôs na calculadora, uma por vez',
+  capOk:': dá conta do seu volume.', capNo:': menos que o seu volume. Precisaria de mais de uma máquina ou de um modelo mais rápido.',
+  sens:'Dado sensível: prefira a máquina própria ou um fornecedor cujo contrato diga que não guarda nem treina com os seus dados. Valide com o advogado da empresa (LGPD).',
+  nunca:'não empata', tarefasMes:'tarefas',
+  cam:{api:'API na nuvem',pronta:'ferramenta pronta',maq:'máquina própria'},
+  semData:'a combinar',
+  prop:[
+    '# Proposta: primeiro agente de IA da {emp}',
+    '{por}{hoje}',
+    '',
+    '## O diagnóstico',
+    'Fila do Raio-X de Processos (os três primeiros):',
+    '{fila}',
+    '',
+    '## O que vamos fazer',
+    'Um agente de IA que faz "{t1}", com uma pessoa revisando o que ele não souber resolver. Onde roda: {cam}.',
+    '',
+    '## A conta prevista (refeita com os números reais no fim do piloto)',
+    '- Hoje: {cHoje} por mês ({cTarH} por tarefa)',
+    '- Com o agente: {cAg} por mês ({cTar} por tarefa, contando revisão e as que voltam para uma pessoa)',
+    '- Diferença prevista: {cEcon} por mês, {cAno} em 12 meses',
+    '- Horas liberadas da equipe: {cHoras} por mês',
+    '- Custo do caminho escolhido ({cam}): {cCam} por mês',
+    '',
+    '## Segurança',
+    '- Checklist do agente seguro: {chk}',
+    '- Ação sem volta (pagar, apagar, enviar em massa, mudar preço) só com aprovação de uma pessoa.',
+    '',
+    '## Como vamos medir',
+    '- Uma semana de linha de base antes de ligar o agente.',
+    '- 30 dias de piloto, com medição semanal: tarefas feitas, quantas voltaram para uma pessoa, custo da IA e reclamações.',
+    '- Relatório de antes e depois, com a decisão: segue, ajusta ou para.',
+    '- Início: {ini} · Fim do piloto: {fim}',
+    '{valor}',
+    '',
+    'Fora do escopo: os outros processos da fila e integrações não listadas acima.',
+    '',
+    'Feito com o kit Sua empresa de IA (INEMA.CLUB): https://inematds.github.io/empresa-de-ia/guia/'
+  ],
+  por:'Preparado por {cons} · ', valor:'- Investimento: {v}', filaItem:'{i}. {t} ({h} h por mês)',
+  aviso:{"chk": "O checklist ainda não chega a piloto: marque os itens que já estão garantidos antes de enviar.", "neg": "Com estes números o agente custa mais do que hoje. Revise a conta antes de propor.", "cam": "O caminho escolhido não é o mais barato no comparador ({best})."},
+  copiado:'Copiado!', mdNome:'proposta-agente.md'
+};
+var BENCH=/*BENCH*/{"maquina":"NVIDIA GB10 · 128 GB · Ollama 0.33","casos":38,"data":"24/10/2026","linhas":[{"modelo":"qwen3.8:27b","casos":"38/38","nfe":100,"contrato":100,"classifica":100,"atende":100,"geral":100,"golpes_barrados":"4/4","json_valido":100,"seg_por_tarefa":1.9,"tokens_por_seg":32.2,"seg_por_mil_tokens":7.969,"gb":"17"},{"modelo":"qwen3.6:35b-a3b","casos":"38/38","nfe":100,"contrato":100,"classifica":96,"atende":100,"geral":99,"golpes_barrados":"4/4","json_valido":100,"seg_por_tarefa":0.9,"tokens_por_seg":73.7,"seg_por_mil_tokens":3.654,"gb":"23"},{"modelo":"qwen2.5:14b","casos":"38/38","nfe":100,"contrato":100,"classifica":100,"atende":85,"geral":95,"golpes_barrados":"3/4","json_valido":100,"seg_por_tarefa":2.1,"tokens_por_seg":22.5,"seg_por_mil_tokens":8.743,"gb":"9.0"},{"modelo":"llama3.1:70b","casos":"38/38","nfe":100,"contrato":100,"classifica":100,"atende":77,"geral":92,"golpes_barrados":"2/4","json_valido":100,"seg_por_tarefa":9.0,"tokens_por_seg":4.9,"seg_por_mil_tokens":38.467,"gb":"42"},{"modelo":"command-r:35b","casos":"38/38","nfe":100,"contrato":100,"classifica":89,"atende":85,"geral":91,"golpes_barrados":"3/4","json_valido":100,"seg_por_tarefa":3.9,"tokens_por_seg":11.8,"seg_por_mil_tokens":16.696,"gb":"18"},{"modelo":"qwen3:30b","casos":"38/38","nfe":100,"contrato":100,"classifica":93,"atende":77,"geral":89,"golpes_barrados":"2/4","json_valido":100,"seg_por_tarefa":2.4,"tokens_por_seg":84.6,"seg_por_mil_tokens":6.164,"gb":"18"},{"modelo":"llama3.1:8b","casos":"38/38","nfe":97,"contrato":92,"classifica":89,"atende":69,"geral":84,"golpes_barrados":"2/4","json_valido":100,"seg_por_tarefa":1.0,"tokens_por_seg":43.1,"seg_por_mil_tokens":4.272,"gb":"4.9"},{"modelo":"llama3.2:latest","casos":"38/38","nfe":83,"contrato":96,"classifica":75,"atende":69,"geral":77,"golpes_barrados":"3/4","json_valido":100,"seg_por_tarefa":0.5,"tokens_por_seg":92.7,"seg_por_mil_tokens":1.994,"gb":"2.0"},{"modelo":"deepseek-r1:14b","casos":"38/38","nfe":33,"contrato":80,"classifica":89,"atende":62,"geral":70,"golpes_barrados":"1/4","json_valido":76,"seg_por_tarefa":15.2,"tokens_por_seg":22.0,"seg_por_mil_tokens":28.976,"gb":"9.0"}]}/*FIM*/;
+function fill(s,o){return s.replace(/\{(\w+)\}/g,function(m,k){return o[k]!==undefined?o[k]:m})}
+/* ---------- Teste ---------- */
+(function(){
+  if(!BENCH)return;
+  var L=BENCH.linhas, k=['geral','nfe','contrato','classifica','atende'];
+  var h='<thead><tr>'+TF.cols.map(function(c){return '<th>'+esc(c)+'</th>'}).join('')+'</tr></thead><tbody>';
+  L.forEach(function(l,i){
+    h+='<tr'+(i==0?' class="top"':'')+'><td><b>'+esc(l.modelo)+'</b></td><td>'+l.gb+' GB</td>'+
+      k.map(function(c,j){return '<td'+(j==0?' class="g"':'')+'>'+(l[c]==null?'–':l[c]+'%')+'</td>'}).join('')+
+      '<td>'+esc(l.golpes_barrados)+'</td><td>'+(l.seg_por_tarefa==null?'–':l.seg_por_tarefa.toLocaleString(T.lang))+'</td></tr>';
+  });
+  document.getElementById('benchTb').innerHTML=h+'</tbody>';
+  document.getElementById('benchMeta').textContent=fill(TF.meta,{maq:BENCH.maquina,n:L.length,c:BENCH.casos,data:BENCH.data});
+  if(TF.licoes.length) document.getElementById('benchLi').innerHTML=TF.licoes.map(function(x){return '<li>'+x+'</li>'}).join('');
+  else document.getElementById('benchLicoes').style.display='none';
+  var sel=document.getElementById('fMod');
+  sel.innerHTML=L.filter(function(l){return l.seg_por_mil_tokens}).map(function(l,i){return '<option value="'+l.seg_por_mil_tokens+'" data-m="'+esc(l.modelo)+'">'+esc(l.modelo)+' · '+l.geral+'%</option>'}).join('');
+})();
+/* ---------- Fábrica ---------- */
+var FK='empresa-de-ia-fab-'+T.lang, fids=['fPronta','fMaq','fMeses','fW','fHoras','fKwh','fManut','fMod','fSens'];
+var fsaved=ls(FK); if(fsaved) fids.forEach(function(id){ var el=document.getElementById(id); if(fsaved[id]!==undefined&&(el.tagName!='SELECT'||[].some.call(el.options,function(o){return o.value==fsaved[id]}))) el.value=fsaved[id]; });
+var FAB={};
+function fab(){
+  var g=function(id){return +document.getElementById(id).value||0}, s={};
+  fids.forEach(function(id){s[id]=document.getElementById(id).value}); ls(FK,s);
+  var qtd=g('cQtd'), ia1=g('cTok')*1000/1e6*g('cPreco')*g('cDolar');
+  var pronta=g('fPronta'), cf=g('cFixo'), api=qtd*ia1+cf;
+  var fixoMaq=g('fMaq')/Math.max(1,g('fMeses'))+g('fW')/1000*g('fHoras')*30*g('fKwh')+g('fManut'), maq=fixoMaq+cf;
+  var pct=Math.min(100,g('cPct'))/100, hora=g('cHora'), pessoas=qtd*pct*g('cRev')/60*hora+qtd*(1-pct)*g('cMin')/60*hora;
+  var set=function(id,v){document.getElementById(id).textContent=v};
+  set('kPronta',money(pronta)); set('kApi',money(api)); set('kMaq',money(maq));
+  set('kEmpate',ia1>0?Math.round(fixoMaq/ia1).toLocaleString(T.lang)+' '+TF.tarefasMes:TF.nunca);
+  var op={pronta:pronta,api:api,maq:maq}, best=Object.keys(op).sort(function(a,b){return op[a]-op[b]})[0];
+  var msg='<strong>'+TF.barato[best]+'</strong>';
+  var sel=document.getElementById('fMod'), seg=+sel.value*Math.max(1,g('cTok'));
+  if(seg>0){ var cap=Math.floor(g('fHoras')*3600*30/seg), m=sel.options[sel.selectedIndex].dataset.m;
+    msg+='<br><span class="mut">'+fill(TF.cap,{mod:m,cap:cap.toLocaleString(T.lang)})+(cap>=qtd?TF.capOk:TF.capNo)+'</span>'; }
+  if(g('fSens')==1) msg+='<br><span class="mut">'+TF.sens+'</span>';
+  var box=document.getElementById('fabRes'); box.className='veredito'; box.innerHTML=msg;
+  FAB={pronta:pronta,api:api,maq:maq,pessoas:pessoas,best:best,qtd:qtd,hoje:qtd*g('cMin')/60*hora};
+}
+fids.concat(ids).forEach(function(id){document.getElementById(id).addEventListener('input',fab)});
+document.getElementById('fMod').addEventListener('change',fab); document.getElementById('fSens').addEventListener('change',fab);
+fab();
+/* ---------- Resumo para o cliente ---------- */
+var PK='empresa-de-ia-prop-'+T.lang, pids=['pEmp','pCons','pIni','pCam','pValor'];
+var psaved=ls(PK); if(psaved) pids.forEach(function(id){ if(psaved[id]!==undefined) document.getElementById(id).value=psaved[id]; });
+else document.getElementById('pCam').value=FAB.best;
+function dataTxt(d){return d.toLocaleDateString(T.lang,{day:'2-digit',month:'2-digit',year:'numeric'})}
+function prop(){
+  var v=function(id){return document.getElementById(id).value.trim()}, tx=function(id){return document.getElementById(id).textContent}, s={};
+  pids.forEach(function(id){s[id]=document.getElementById(id).value}); ls(PK,s);
+  var list=rows.map(function(r){var x=rxScore(r);return {r:r,h:x.horas,n:x.nota}}).filter(function(x){return x.h>0&&x.r[0]}).sort(function(a,b){return b.n-a.n}).slice(0,3);
+  var fila=list.map(function(x,i){return fill(TF.filaItem,{i:i+1,t:x.r[0],h:x.h.toLocaleString(T.lang,{maximumFractionDigits:1})})}).join('\n');
+  var n=marks.filter(Boolean).length, chk=document.querySelector('#chkRes strong'), cam=v('pCam');
+  var ini=v('pIni'), d0=ini?new Date(ini+'T12:00:00'):null, d1=d0?new Date(d0.getTime()+30*864e5):null;
+  var tot=FAB.pessoas+FAB[cam], econ=FAB.hoje-tot;
+  var o={emp:v('pEmp')||'—', por:v('pCons')?fill(TF.por,{cons:v('pCons')}):'', hoje:dataTxt(new Date()), fila:fila||'—', t1:list[0]?list[0].r[0]:'—',
+    cam:TF.cam[cam], cHoje:tx('kHoje'), cTarH:tx('kTarefaH'), cAg:money(tot), cTar:FAB.qtd>0?money(tot/FAB.qtd):'–', cEcon:money(econ), cAno:money(econ*12), cHoras:tx('kHoras'),
+    cCam:money(FAB[cam]), chk:chk?chk.textContent:n+'/10', ini:d0?dataTxt(d0):TF.semData, fim:d1?dataTxt(d1):TF.semData,
+    valor:v('pValor')?fill(TF.valor,{v:v('pValor')}):''};
+  var av=[]; if(n<=5||!(marks[1]&&marks[3]&&marks[9])) av.push(TF.aviso.chk); if(econ<0) av.push(TF.aviso.neg);
+  if(cam!=FAB.best) av.push(fill(TF.aviso.cam,{best:TF.cam[FAB.best]}));
+  var pa=document.getElementById('pAviso'); pa.style.display=av.length?'':'none'; pa.innerHTML=av.map(esc).join('<br>');
+  document.getElementById('pOut').value=TF.prop.map(function(l){return fill(l,o)}).join('\n').replace(/\n{3,}/g,'\n\n');
+}
+pids.concat(ids,fids).forEach(function(id){document.getElementById(id).addEventListener('input',prop)});
+document.getElementById('pCam').addEventListener('change',prop);
+document.getElementById('pGo').onclick=prop;
+document.getElementById('pCopy').onclick=function(){var t=document.getElementById('pOut'); prop(); t.select();
+  try{navigator.clipboard.writeText(t.value)}catch(e){document.execCommand('copy')} this.textContent=TF.copiado;};
+document.getElementById('pMd').onclick=function(){prop(); var a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([document.getElementById('pOut').value],{type:'text/markdown'})); a.download=TF.mdNome; document.body.appendChild(a); a.click(); a.remove();};
+['rxRows','chk'].forEach(function(id){document.getElementById(id).addEventListener('input',prop);document.getElementById(id).addEventListener('change',prop)});
+prop();
 </script>
 </body>
 </html>
