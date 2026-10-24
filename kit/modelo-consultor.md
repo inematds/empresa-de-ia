@@ -51,6 +51,8 @@ Antes de mexer em nada, meça uma semana do processo escolhido: quantas tarefas,
 
 ## 5. Piloto de 30 dias
 
+Planilha pronta para preencher: `kit/piloto-semanal.csv`.
+
 Uma planilha simples, uma linha por semana:
 
 | Semana | Tarefas feitas pelo agente | Voltaram para uma pessoa | Custo da IA (R$) | Reclamações | Observação |

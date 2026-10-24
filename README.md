@@ -59,6 +59,14 @@ Tudo isso roda no navegador (⚙️ JavaScript da página); não há servidor ne
 3. ⚙️ `python3 bench/injeta.py` põe o resultado na tabela dos 3 guias.
 4. 🧠 Revisar as lições da rodada no bloco `TF.licoes` dos guias e publicar (commit + push).
 
+## Testar a sua tarefa
+
+1. Abra `bench/casos.json` e copie um caso parecido com o seu (por exemplo, um de `atende`).
+2. Troque o `id` por um nome novo e a `entrada` pela mensagem real do seu cliente (sem dado pessoal).
+3. Em `requer`, ponha o que a resposta precisa conter (ex.: o preço certo); em `proibe`, o que ela não pode dizer.
+4. Para tarefas de ler documento, use as tarefas `nfe` ou `contrato` e preencha o `esperado` com os valores certos.
+5. Rode `python3 bench/roda.py rodar --modelos llama3.2:latest --saida bench/minha-rodada` e abra `bench/minha-rodada/benchmark.csv`.
+
 ## Fontes dos números do guia
 
 - Cetic.br, TIC Empresas 2025 (17% das empresas usam IA; 80% compram pronto, 26% fazem própria).

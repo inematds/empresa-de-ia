@@ -51,6 +51,8 @@ Before changing anything, measure the chosen process for one week: how many task
 
 ## 5. 30-day pilot
 
+Ready-to-fill spreadsheet: `kit/piloto-semanal.en.csv`.
+
 A simple spreadsheet, one row per week:
 
 | Week | Tasks done by the agent | Handed back to a person | AI cost ($) | Complaints | Notes |

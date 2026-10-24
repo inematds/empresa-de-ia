@@ -59,6 +59,14 @@ All of this runs in the browser (⚙️ the page's JavaScript); there is no serv
 3. ⚙️ `python3 bench/injeta.py` puts the result into the table of the 3 guides.
 4. 🧠 Review the round's lessons in the `TF.licoes` block of the guides and publish (commit + push).
 
+## Testing your task
+
+1. Open `bench/casos.json` and copy a case similar to yours (for example, one from `atende`).
+2. Change the `id` to a new name and the `entrada` to your customer's real message (with no personal data).
+3. In `requer`, put what the answer must contain (e.g., the correct price); in `proibe`, what it must not say.
+4. For document-reading tasks, use the `nfe` or `contrato` tasks and fill in `esperado` with the correct values.
+5. Run `python3 bench/roda.py rodar --modelos llama3.2:latest --saida bench/minha-rodada` and open `bench/minha-rodada/benchmark.csv`.
+
 ## Sources for the guide's numbers
 
 - Cetic.br, TIC Empresas 2025 (17% of companies use AI; 80% buy ready-made, 26% build their own).

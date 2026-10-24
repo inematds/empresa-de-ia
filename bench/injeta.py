@@ -28,7 +28,7 @@ for l in res["linhas"]:
 
 bench = {"maquina": "NVIDIA GB10 · 128 GB · Ollama 0.33",
          "casos": sum(len(t["casos"]) for t in casos["tarefas"].values()),
-         "data": "24/10/2026", "linhas": linhas}
+         "data": "2026-10-24", "linhas": linhas}
 js = json.dumps(bench, ensure_ascii=False, separators=(",", ":"))
 for arq in ["guia/index.html", "guia/en/index.html", "guia/es/index.html"]:
     p = REPO / arq

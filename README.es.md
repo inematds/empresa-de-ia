@@ -59,6 +59,14 @@ Todo esto corre en el navegador (⚙️ JavaScript de la página); no hay servid
 3. ⚙️ `python3 bench/injeta.py` inserta el resultado en la tabla de las 3 guías.
 4. 🧠 Revisar las lecciones de la ronda en el bloque `TF.licoes` de las guías y publicar (commit + push).
 
+## Probar tu tarea
+
+1. Abre `bench/casos.json` y copia un caso parecido al tuyo (por ejemplo, uno de `atende`).
+2. Cambia el `id` por un nombre nuevo y la `entrada` por el mensaje real de tu cliente (sin datos personales).
+3. En `requer`, pon lo que la respuesta necesita contener (ej.: el precio correcto); en `proibe`, lo que no puede decir.
+4. Para tareas de lectura de documentos, usa las tareas `nfe` o `contrato` y completa el `esperado` con los valores correctos.
+5. Ejecuta `python3 bench/roda.py rodar --modelos llama3.2:latest --saida bench/minha-rodada` y abre `bench/minha-rodada/benchmark.csv`.
+
 ## Fuentes de los números de la guía
 
 - Cetic.br, TIC Empresas 2025 (17% de las empresas usan IA; 80% compran lo listo, 26% hacen la propia).
