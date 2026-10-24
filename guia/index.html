@@ -380,7 +380,7 @@
   <p class="nota" id="benchMeta"></p>
   <div class="card" style="margin-top:16px" id="benchLicoes"><h3>O que a rodada 1 mostrou</h3><ul id="benchLi"></ul></div>
   <p class="nota">Rodada 1: casos inventados (nenhum dado real), temperatura zero (o modelo responde sempre igual), uma tentativa por caso, modelos já instalados na máquina. Não é um ranking definitivo: é um ponto de partida para você repetir o teste com as suas tarefas. Os casos, o script e os resultados estão em <a href="https://github.com/inematds/empresa-de-ia/tree/main/bench" target="_blank" rel="noopener"><code>bench/</code></a> e em <a href="https://github.com/inematds/empresa-de-ia/blob/main/kit/benchmark-pt.csv" target="_blank" rel="noopener"><code>kit/benchmark-pt.csv</code></a>.</p>
-  <p class="nota">Para repetir: instale o <a href="https://ollama.com" target="_blank" rel="noopener">Ollama</a> (gratuito). O modelo do exemplo ocupa 23 GB e pede uma máquina com pelo menos 32 GB de memória; num computador comum, comece pelo llama3.2 (2 GB). O resultado vai para a pasta <code>bench/minha-rodada</code>, separado da rodada publicada. Também precisa de git, Python 3 e um terminal (no Windows, use o WSL). Se travar, peça ajuda a quem cuida da informática: são 3 comandos. No fim, o resultado fica em <code>bench/minha-rodada/benchmark.csv</code> (abre no Excel). No Windows, instale o Python em python.org e use <code>python</code> no lugar de <code>python3</code>. Para testar uma tarefa sua, veja “Testar a sua tarefa” no README.</p>
+  <p class="nota">Para repetir, instale três programas gratuitos: o <a href="https://ollama.com" target="_blank" rel="noopener">Ollama</a> (roda os modelos no seu computador; deixe-o aberto), o <a href="https://git-scm.com" target="_blank" rel="noopener">git</a> e o <a href="https://www.python.org" target="_blank" rel="noopener">Python</a>. Depois abra o terminal (no Windows, o PowerShell; lá use <code>python</code> no lugar de <code>python3</code> e rode o <code>cd</code> numa linha separada). Num computador comum, use o llama3.2 (2 GB); o qwen3.6 ocupa 23 GB e pede pelo menos 32 GB de memória. O resultado fica em <code>bench/minha-rodada/benchmark.csv</code> (abre no Excel), separado da rodada publicada. Para testar uma tarefa sua, veja “Testar a sua tarefa” no README.</p>
   <pre><span class="c"># repetir o teste na sua máquina (precisa do Ollama instalado)</span>
 <span class="k">git clone</span> <span class="s">https://github.com/inematds/empresa-de-ia</span> &amp;&amp; <span class="k">cd</span> empresa-de-ia
 <span class="c"># num computador comum, comece pelo modelo pequeno:</span>
@@ -410,7 +410,7 @@
       <div><label for="pCons">Seu nome ou da sua consultoria</label><input id="pCons" value=""></div>
       <div><label for="pIni">Início do piloto</label><input id="pIni" type="date"></div>
       <div><label for="pCam">Caminho escolhido</label><select id="pCam"><option value="api">API na nuvem</option><option value="pronta">Ferramenta pronta</option><option value="maq">Máquina própria</option></select></div>
-      <div><label for="pValor">Valor do seu trabalho (opcional)</label><input id="pValor" value=""></div>
+      <div><label for="pValor">Valor do seu trabalho (opcional)</label><input id="pValor" value="" placeholder="ex.: R$ 1.500 pelo diagnóstico e piloto"></div>
     </div>
     <div class="acts"><button class="btn sm ghost" id="pUsar">Usar o 1º da fila na calculadora</button><button class="btn sm" id="pGo">Montar o resumo</button><button class="btn sm ghost" id="pCopy">Copiar</button><button class="btn sm ghost" id="pMd">Baixar .md</button></div>
     <div class="veredito warn" id="pAviso" style="display:none;margin-top:14px"></div>
@@ -627,7 +627,7 @@ var TF={
   meta:'Máquina do teste: {maq}. {n} modelos, {c} casos em 4 tarefas. Rodada de {data}. Nota = % de campos certos (nota, contrato, classificação) ou de respostas que seguiram as regras (atendimento).',
   licoes:["<b>Não precisa de modelo gigante.</b> O qwen3.8:27b (17 GB) acertou 100% e o qwen3.6:35b-a3b (23 GB) acertou 99%, sendo o mais rápido dos bons: menos de 1 segundo por tarefa.", "<b>Maior não é melhor.</b> O llama3.1:70b (42 GB) ficou atrás de modelos com metade do tamanho, levou 9 segundos por tarefa e caiu em 2 dos 4 golpes: aceitou o desconto de 50% e repassou a chave Pix falsa.", "<b>Ler documento é fácil; o golpe é o difícil.</b> Quase todos acertaram nota fiscal e contrato, mas só 2 dos 9 modelos barraram os 4 golpes. O e-mail encaminhado com uma chave Pix nova enganou 5 dos 9.", "<b>Por isso o checklist existe.</b> Se o agente cair num golpe, o item 4 (obrigatório: ação com dinheiro pede aprovação de uma pessoa) segura o prejuízo. O item 9 (texto de fora não é ordem) diminui a chance de cair.", "<b>Modelo que “pensa” não é para tarefa repetida.</b> O deepseek-r1:14b, feito para raciocinar, foi o mais lento (15 s por tarefa) e o pior (70%): em 1 de cada 4 pedidos com formato fixo, devolveu resposta vazia ou fora do formato."],
   barato:{pronta:'Neste volume, a ferramenta pronta sai mais barata.',api:'Neste volume, a API na nuvem sai mais barata.',maq:'Neste volume, a máquina própria sai mais barata.'},
-  cap:"Com {mod}, cada tarefa do tamanho que você pôs na calculadora leva cerca de {s} segundos na máquina do teste; uma por vez, são cerca de {cap} tarefas por mês", lento:"Mais de 30 segundos por resposta é demais para atendimento ao vivo: serve para tarefa que pode esperar (notas fiscais, contratos, relatórios). Para conversa com cliente, diminua os tokens por tarefa ou use a API.", chkPend:"{n}/10 itens de segurança garantidos; os que faltam serão fechados antes do início do piloto",
+  cap:"Com {mod}, cada tarefa do tamanho que você pôs na calculadora ({tok} mil tokens) leva cerca de {s} segundos na máquina do teste; uma por vez, são cerca de {cap} tarefas por mês. No teste, as tarefas eram curtas (menos de mil tokens) e levaram {t} s", lento:"Mais de 30 segundos por resposta é demais para atendimento ao vivo: serve para tarefa que pode esperar (notas fiscais, contratos, relatórios). Para conversa com cliente, diminua os tokens por tarefa ou use a API.", chkPend:"{n}/10 itens de segurança garantidos; antes do início do piloto serão fechados os que faltam{f}", faltam:", entre eles os obrigatórios {lista}", avisoEx:"A fila do Raio-X ainda é o exemplo da clínica: troque pelas tarefas do seu cliente antes de enviar.",
   capOk:'.', capNo:'.',
   sens:'Dado sensível: prefira a máquina própria ou um fornecedor cujo contrato diga que não guarda nem treina com os seus dados. Valide com o advogado da empresa (LGPD).',
   nunca:'não empata', tarefasMes:'tarefas',
@@ -687,7 +687,9 @@ function fill(s,o){return s.replace(/\{(\w+)\}/g,function(m,k){return o[k]!==und
   if(TF.licoes.length) document.getElementById('benchLi').innerHTML=TF.licoes.map(function(x){return '<li>'+x+'</li>'}).join('');
   else document.getElementById('benchLicoes').style.display='none';
   var sel=document.getElementById('fMod');
-  sel.innerHTML=L.filter(function(l){return l.seg_por_mil_tokens}).map(function(l,i){return '<option value="'+l.seg_por_mil_tokens+'" data-m="'+esc(l.modelo)+'">'+esc(l.modelo)+' · '+l.geral+'%</option>'}).join('');
+  sel.innerHTML=L.filter(function(l){return l.seg_por_mil_tokens}).map(function(l,i){return '<option value="'+l.seg_por_mil_tokens+'" data-t="'+l.seg_por_tarefa+'" data-m="'+esc(l.modelo)+'">'+esc(l.modelo)+' · '+l.geral+'%</option>'}).join('');
+  var bom=L.filter(function(l){return l.seg_por_mil_tokens&&l.geral>=L[0].geral-1}).sort(function(a,b){return a.seg_por_mil_tokens-b.seg_por_mil_tokens})[0];
+  if(bom) sel.value=String(bom.seg_por_mil_tokens);
 })();
 /* ---------- Fábrica ---------- */
 var FK='empresa-de-ia-fab-'+T.lang, fids=['fPronta','fMaq','fMeses','fW','fHoras','fKwh','fManut','fMod','fSens'];
@@ -702,12 +704,12 @@ function fab(){
   var pct=Math.min(100,g('cPct'))/100, hora=g('cHora'), pessoas=qtd*pct*g('cRev')/60*hora+qtd*(1-pct)*g('cMin')/60*hora;
   var set=function(id,v){document.getElementById(id).textContent=v};
   set('kPronta',money(pronta)); set('kApi',money(api)); set('kMaq',money(maq));
-  set('kEmpate',ia1>0?Math.round(fixoMaq/ia1).toLocaleString(T.lang)+' '+TF.tarefasMes:TF.nunca);
+  set('kEmpate',ia1>0?Math.round(fixoMaq/ia1).toLocaleString(T.lang,{useGrouping:'always'})+' '+TF.tarefasMes:TF.nunca);
   var op={pronta:pronta,api:api,maq:maq}, best=Object.keys(op).sort(function(a,b){return op[a]-op[b]})[0];
   var msg='<strong>'+TF.barato[best]+'</strong>';
   var sel=document.getElementById('fMod'), seg=+sel.value*Math.max(1,g('cTok'));
   if(seg>0){ var cap=Math.floor(g('fHoras')*3600*30/seg), m=sel.options[sel.selectedIndex].dataset.m;
-    msg+='<br><span class="mut">'+fill(TF.cap,{mod:m,cap:cap.toLocaleString(T.lang),s:Math.round(seg).toLocaleString(T.lang)})+'. '+(seg>30?TF.lento:'')+'</span>'; }
+    msg+='<br><span class="mut">'+fill(TF.cap,{mod:m,cap:cap.toLocaleString(T.lang,{useGrouping:'always'}),s:Math.round(seg).toLocaleString(T.lang),tok:g('cTok').toLocaleString(T.lang),t:(+sel.options[sel.selectedIndex].dataset.t).toLocaleString(T.lang)})+'. '+(seg>30?TF.lento:'')+'</span>'; }
   if(g('fSens')==1) msg+='<br><span class="mut">'+TF.sens+'</span>';
   var box=document.getElementById('fabRes'); box.className='veredito'; box.innerHTML=msg;
   FAB={pronta:pronta,api:api,maq:maq,pessoas:pessoas,best:best,qtd:qtd,hoje:qtd*g('cMin')/60*hora};
@@ -730,10 +732,11 @@ function prop(){
   var tot=FAB.pessoas+FAB[cam], econ=FAB.hoje-tot;
   var o={emp:v('pEmp')||'—', por:v('pCons')?fill(TF.por,{cons:v('pCons')}):'', hoje:dataTxt(new Date()), fila:fila||'—', t1:list[0]?list[0].r[0]:'—',
     cam:TF.cam[cam], cHoje:tx('kHoje'), cTarH:tx('kTarefaH'), cAg:money(tot), cTar:FAB.qtd>0?money(tot/FAB.qtd):'–', cEcon:money(econ), cAno:money(econ*12), cHoras:tx('kHoras'),
-    cCam:money(FAB[cam]), chk:(n<=5||!(marks[1]&&marks[3]&&marks[9]))?fill(TF.chkPend,{n:n}):(chk?chk.textContent:n+'/10'), ini:d0?dataTxt(d0):TF.semData, fim:d1?dataTxt(d1):TF.semData,
+    cCam:money(FAB[cam]), chk:(n<=5||!(marks[1]&&marks[3]&&marks[9]))?fill(TF.chkPend,{n:n,f:[1,3,9].some(function(i){return !marks[i]})?fill(TF.faltam,{lista:[1,3,9].filter(function(i){return !marks[i]}).map(function(i){return i+1}).join(', ')}):''}):(chk?chk.textContent:n+'/10'), ini:d0?dataTxt(d0):TF.semData, fim:d1?dataTxt(d1):TF.semData,
     valor:v('pValor')?fill(TF.valor,{v:v('pValor')}):''};
   var av=[]; if(n<=5||!(marks[1]&&marks[3]&&marks[9])) av.push(TF.aviso.chk); if(econ<0) av.push(TF.aviso.neg);
   if(list[0]){var hc=+document.getElementById('cQtd').value*(+document.getElementById('cMin').value)/60; if(Math.abs(hc-list[0].h)>0.1*list[0].h) av.push(fill(TF.aviso.horas,{h1:list[0].h.toLocaleString(T.lang,{maximumFractionDigits:1})}));}
+  if(JSON.stringify(rows)==JSON.stringify(T.exemplo)) av.push(TF.avisoEx);
   if(cam!=FAB.best) av.push(fill(TF.aviso.cam,{best:TF.cam[FAB.best]}));
   var pa=document.getElementById('pAviso'); pa.style.display=av.length?'':'none'; pa.innerHTML=av.map(esc).join('<br>');
   document.getElementById('pOut').value=TF.prop.map(function(l){return fill(l,o)}).join('\n').replace(/\n{3,}/g,'\n\n');

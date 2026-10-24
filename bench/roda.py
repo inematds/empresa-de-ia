@@ -211,7 +211,10 @@ def resumo(publicar=True):
                                                 ensure_ascii=False, indent=1))
     cab = ["modelo", "geral", "nfe", "contrato", "classifica", "atende", "golpes_barrados",
            "json_valido", "seg_por_tarefa", "tokens_por_seg", "casos"]
-    csv = [";".join(cab)] + [";".join("" if l.get(k) is None else str(l[k]) for k in cab) for l in linhas]
+    # ";" e vírgula decimal: abre direto no Excel em português
+    # "4/4" viraria data no Excel: grava "4 de 4"
+    val = lambda v: "" if v is None else (str(v).replace(".", ",") if isinstance(v, float) else str(v).replace("/", " de "))
+    csv = [";".join(cab)] + [";".join(val(l.get(k)) for k in cab) for l in linhas]
     (RAIZ.parent / "kit" / "benchmark-pt.csv" if publicar else RES / "benchmark.csv").write_text("\n".join(csv) + "\n")
     for l in linhas:
         print(l)
